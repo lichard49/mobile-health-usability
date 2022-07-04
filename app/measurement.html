@@ -6,15 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobile Health Usability</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="measurement.css">
   <script defer type="text/javascript" src="app.js"></script>
+  <script defer type="text/javascript" src="measurement.js"></script>
 </head>
 <body>
   <div id="header" class="panel">
-    Header
+    Measurement
   </div>
 
   <div id="content" class="panel">
-    Measurement
+    <video autoplay id="measurementVideo" hidden></video>
+    <canvas id="measurementCanvas"></canvas>
   </div>
 
   <div id="footer" class="panel">
