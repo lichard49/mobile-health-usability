@@ -13,14 +13,14 @@ body {
 }
 
 #header {
-  background-color: lightblue;
+  background-color: #007CC7;
 }
 
 #content {
   flex-grow: 1;
-  background-color: blue;
+  background-color: #4DA8DA;
 }
 
 #footer {
-  background-color: darkblue;
+  background-color: #007CC7;
 }
