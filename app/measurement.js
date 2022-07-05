@@ -35,7 +35,8 @@ const highPassFilterCoeffs = iirCalculator.highpass({
 const highPassFilter = new Fili.IirFilter(highPassFilterCoeffs);
 
 // FFT radix must be 2^n
-const fft = new Fili.Fft(1024);
+const windowSize = 1024;
+const fft = new Fili.Fft(windowSize);
 
 const measurementVideo = document.getElementById('measurementVideo');
 const measurementCanvas = document.getElementById('measurementCanvas');
@@ -47,7 +48,8 @@ function drawCameraFrame() {
   measurementContext.drawImage(measurementVideo, 0, 0);
 }
 
-const signal = [];
+const totalSignal = [];
+const windowedSignal = [];
 let filteredSignal = [];
 
 function drawSignal() {
@@ -59,15 +61,17 @@ function drawSignal() {
   const yMiddle = measurementCanvas.height;
   const xMin = 100;
   const xMax = measurementCanvas.width - 100;
-  const windowSize = xMax - xMin;
+  const drawnWindowSize = xMax - xMin;
+  const xIncrementMultiplier = drawnWindowSize / windowSize;
 
   // draw signal
   measurementContext.beginPath();
-  const startIndex = Math.max(0, filteredSignal.length - windowSize);
   for (let index = 0; index < filteredSignal.length; index++) {
-    const value = filteredSignal[index + startIndex];
+    const value = filteredSignal[index];
     const scaledValue = (value + 0.2) * 5;
-    measurementContext.lineTo(xMin + index, yMiddle - 200 * scaledValue);
+    const x = xMin + index * xIncrementMultiplier;
+    const y = yMiddle - 200 * scaledValue;
+    measurementContext.lineTo(x, y);
   }
   measurementContext.stroke();
 }
@@ -84,16 +88,22 @@ function processCameraFrame() {
     measurementCanvas.height/2, 1, 1).data;
   const r = pixel[0];
   const g = pixel[1];
-  signal.push((0.67 * r + 0.33 * g) / 255);
+  const rg = (0.67 * r + 0.33 * g) / 255;
+  totalSignal.push(rg);
 
-  filteredSignal = lowPassFilter.multiStep(signal);
+  windowedSignal.push(rg);
+  while (windowedSignal.length > windowSize) {
+    windowedSignal.shift();
+  }
+
+  filteredSignal = lowPassFilter.multiStep(windowedSignal);
   filteredSignal = highPassFilter.multiStep(filteredSignal);
 
   const fftResult = fft.forward(filteredSignal, 'none');
   const fftMagnitude = fft.magnitude(fftResult); // magnitude
   const fftMagnitudeDb = fft.magToDb(fftMagnitude); // magnitude in dB
   const fftMaxBin = argMax(fftMagnitudeDb);
-  const fftMaxFrequency = fftMaxBin * sampleRate / fftMagnitude.length; // Hz
+  const fftMaxFrequency = fftMaxBin * sampleRate / windowSize; // Hz
   const heartRateBpm = fftMaxFrequency * 60; // BPM
   heartRate.innerText = heartRateBpm;
 }
