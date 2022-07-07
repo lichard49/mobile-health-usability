@@ -1,0 +1,261 @@
+/*File contains CSS styling for all the basic UI Pages, or home page + first 3 slides of Heart and Respiratory Rate
+Google Slides that contain images of the pages that are styled with this page: 
+https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wjYn0/edit?usp=sharing
+*/
+
+
+
+/*CSS for the Home Page:*/
+#telehealth{
+    position: absolute;
+    width: 900px;
+    height: 90px;
+    left: 60px;
+    top: 62px;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 90px;
+    line-height: 40px;   
+    text-align: center;
+    color: #000000;
+    }
+    
+    #summaryText{
+    position: absolute;
+    width: 850px;
+    height: 250px;
+    left: 80px;
+    right: 115px;
+    top: 200px; 
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 50px;
+    /* or 130% */
+    text-align: center;
+    color: #000000;
+    }
+    
+    #box1{
+    box-sizing: border-box;
+    position: absolute;
+    width: 850px;
+    height: 350px;
+    left: 70px;
+    top: 500px;
+    background: #FFFFFF;
+    border: 1px solid #3771E0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    
+    #box2{
+    box-sizing: border-box;
+    position: absolute;
+    width: 850px;
+    height: 350px;
+    left: 70px;
+    top: 1000px;
+    background: #FFFFFF;
+    border: 1px solid #3771E0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    }
+
+
+#top{
+    position: absolute;
+    margin-left: 17px;
+    margin-top:25px; 
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 26px;
+    color: #000000;
+    }
+    
+    #middle{
+    position: absolute;
+    top: 100px;
+    left: 17px;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 60px;  
+    color: #000000;
+    }
+    
+    #button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    position: absolute;
+    width: 320px;
+    height: 80px;
+    left: 480px;
+    top: 240px;    
+    background: #074EE8;
+    border-radius: 4px;
+    border-style: solid;
+    border-color:#074EE8;
+    color:white;
+    font-family: 'Patrick Hand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 18px;
+    }
+    
+    .flex-container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+        align-items: center;
+        align-content: space-around;
+    }
+
+
+/* The CSS for all basic UI pages*/
+
+#arrow{
+    height: 14px;
+    width: 28px;
+    top: 20px;
+    left: 10px;
+}
+
+#boxPg1{
+    box-sizing: border-box;
+    position: absolute;
+    width: 900px;
+    height: 200px;
+    left: 40px;
+    top: 80px;
+    background: #FFFFFF;
+    border: 1px solid #3771E0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;;
+}
+#boxPg2{
+    box-sizing: border-box;
+    position: absolute;
+    width: 900px;
+    height: 200px;
+    left: 90px;
+    top: 80px;
+    background: #FFFFFF;
+    border: 1px solid #3771E0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;;
+}
+#boxText1{
+    position: absolute;
+    height: 90px;
+    left: 37px;
+    right: 37px;
+    top: 29px;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+    color: #000000;
+}
+#boxText2{
+    position: absolute;
+    height: 90px;
+    left: 37px;
+    right: 37px;
+    top: 20px;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 50px;
+    text-align: center;
+    color: #000000;
+}
+#boxText3{
+    position: absolute;
+    height: 90px;
+    left: 37px;
+    right: 37px;
+    top: 35px;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 55px;
+    line-height: 60px;
+    text-align: center;
+    color: #000000;
+}
+
+#hrpg1Image{
+    position: absolute;
+    left: 25px;
+    top: 270px;
+}
+#hrpg2Image{
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    top: 350px;
+}
+
+
+#buttonNext{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    left: 650px;
+    top: 1450px;   
+    background: #074EE8;
+    border-radius: 4px;
+    border-style: solid;
+    border-color:#074EE8;
+    color:white;
+    font-family: 'Patrick Hand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 18px;
+    }
+
+#buttonCancel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    margin-top: 1450px;
+    margin-left: 25px;
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 4px;
+    border-style: solid;
+    border-color:#ffffff;
+    color:#3771E0;
+    font-family: 'Patrick Hand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 18px;
+}
