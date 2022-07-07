@@ -1,4 +1,4 @@
-/*File contains CSS styling for all the basic UI Pages, or home page + first 3 slides of Heart and Respiratory Rate
+/*File contains CSS styling for all the basic UI Pages, or home page + first 4 slides of Heart and first three of Respiratory Rate
 Google Slides that contain images of the pages that are styled with this page: 
 https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wjYn0/edit?usp=sharing
 */
@@ -156,6 +156,19 @@ https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wj
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;;
 }
+
+#boxPgGif{
+    box-sizing: border-box;
+    position: absolute;
+    width: 900px;
+    height: 200px;
+    left: 90px;
+    top: 90px;
+    background: #FFFFFF;
+    border: 1px solid #3771E0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;;
+}
 #boxText1{
     position: absolute;
     height: 90px;
@@ -234,7 +247,31 @@ https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wj
     font-weight: 400;
     font-size: 50px;
     line-height: 18px;
-    }
+}
+
+#buttonMeasurements{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    position: absolute;
+    width: 400px;
+    height: 80px;
+    left: 500px;
+    top: 1450px;   
+    background: #074EE8;
+    border-radius: 4px;
+    border-style: solid;
+    border-color:#074EE8;
+    color:white;
+    font-family: 'Patrick Hand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 18px;
+}
 
 #buttonCancel{
     display: flex;
@@ -258,4 +295,12 @@ https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wj
     font-weight: 400;
     font-size: 50px;
     line-height: 18px;
+}
+
+#gif{
+    position: absolute;
+    left: 0px;
+    top: 350px;
+    width: 1080px;
+    height: 1080px;
 }

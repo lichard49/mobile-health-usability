@@ -5,4 +5,6 @@ const toMeasurementPageButton =
 
 toMeasurementPageButton.addEventListener('click', () => {
   window.location = 'measurement.html';
+
 });
+
