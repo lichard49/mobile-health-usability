@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <title>Home_page_Practice</title>
+        <link rel="stylesheet" type="text/css" href="basicUIPagesStyle.css" media= "screen" />
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;1,300&family=Patrick+Hand&display=swap');
+        </style>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;1,300&display=swap');
+        </style>
+    </head>
+    <body>
+        <div id="telehealth">Telehealth Scope</div>
+        <div id="summaryText">Take the following health <br>measurements before your<br>
+        telehealth appointment begins.</div>
+        <div class="flex-container"> 
+            <div id="box1">
+                <div id="top"><b>Heart Rate</b></div>
+                <div id="middle"> Measure the pace of your heart in beats per minute.</div>
+                <input type="button" onclick="window.location.href = 'hrPage1.html';" id="button" value="Measure Heart Rate">
+            </div>
+
+            <div id="box2">
+                <div id="top"><b>Respiratory Rate</b></div>
+                <div id="middle">Measure the number of breaths you take per minute.</div>
+                <input type="button" onclick="window.location.href = 'rrPage1.html';" id="button" value="Measure Respiratory Rate">
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -1,3 +1,48 @@
+#marginAdder{
+  margin-left: 25%;
+  margin-right: 10%;
+}
+
+#mainTitle {
+  color: #000000;
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10vw;
+  text-align: center;
+
+}
+
+#titleBox{
+  font-size: 10vw;
+  color:rgb(24, 76, 0);
+  margin-top: 3%;
+  margin-bottom: 5%;
+}
+#measuringBox{
+  font-size: 10vw;
+  color:rgb(24, 76, 0);
+  margin-top: 5%;
+  margin-left: 20%;
+  width: 300px;
+  border: 15px solid blue;
+  padding: 50px;
+  margin:20px;
+ /* height: 50px;
+  width: 150px;
+  border: 15px solid black;*/
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+}
+
+
 html, body {
   height: 100%;
 }
@@ -24,3 +69,4 @@ body {
 #footer {
   background-color: #007CC7;
 }
+
