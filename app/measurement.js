@@ -108,18 +108,22 @@ function processCameraFrame() {
   heartRate.innerText = heartRateBpm;
 }
 
+let isFlashlightOn = false;
+
+function toggleFlashlight() {
+    isFlashlightOn = !isFlashlightOn;
+    const track = measurementVideo.srcObject.getVideoTracks()[0];
+    track.applyConstraints({
+      advanced: [{torch: isFlashlightOn}]
+    });
+}
+
 if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
   navigator.mediaDevices.getUserMedia({ video: {
     facingMode: 'environment'
   }}).then((videoStream) => {
     // get video
     measurementVideo.srcObject = videoStream;
-
-    // turn on flash
-    const track = videoStream.getVideoTracks()[0];
-    track.applyConstraints({
-      advanced: [{torch: true}]
-    });
 
     // draw frames from the camera
     setInterval(() => {
