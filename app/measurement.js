@@ -1,3 +1,5 @@
+
+
 const sampleRate = 100; // Hz
 const samplePeriod = 1 / sampleRate * 1000; // ms
 
@@ -132,4 +134,10 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
       drawSignal();
     }, samplePeriod);
   });
+}
+
+//Hana's additions: 
+//Help toggle Menu
+function toggleHelpPopup(){
+  document.getElementById("popup-1").classList.toggle("active");
 }

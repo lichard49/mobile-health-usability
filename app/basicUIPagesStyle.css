@@ -113,14 +113,14 @@ https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wj
     line-height: 18px;
     }
     
-    .flex-container{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap-reverse;
-        justify-content: center;
-        align-items: center;
-        align-content: space-around;
-    }
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}
 
 
 /* The CSS for all basic UI pages*/
@@ -128,9 +128,22 @@ https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wj
 #arrow{
     height: 14px;
     width: 28px;
-    top: 20px;
-    left: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
 }
+
+
+a:link, a:visited {
+    background-color: #ffffff;
+    color: white;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    
+  }
+  
 
 #boxPg1{
     box-sizing: border-box;
@@ -257,7 +270,7 @@ https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wj
     padding: 0px 12px;
     gap: 6px;
     position: absolute;
-    width: 400px;
+    width: 460px;
     height: 80px;
     left: 500px;
     top: 1450px;   
@@ -396,3 +409,4 @@ https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wj
     line-height: 60px;
     color: #000000;
 }
+

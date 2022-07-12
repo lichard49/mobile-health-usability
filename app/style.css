@@ -1,7 +1,8 @@
 #marginAdder{
-  margin-left: 25%;
-  margin-right: 10%;
-}
+  margin-left: 0%;
+  margin-right: 0%;
+}*/
+
 
 #mainTitle {
   color: #000000;
@@ -28,7 +29,7 @@
   border: 15px solid blue;
   padding: 50px;
   margin:20px;
- /* height: 50px;
+ +/* height: 50px;
   width: 150px;
   border: 15px solid black;*/
 }
@@ -53,12 +54,14 @@ body {
   flex-direction: column;
 }
 
+/*
 .panel {
   padding: 20px;
-}
+}*/
 
 #header {
   background-color: #007CC7;
+  margin-top: 1000px;
 }
 
 #content {

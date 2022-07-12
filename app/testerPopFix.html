@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Health Usability</title>
+  <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+  <link rel="stylesheet" type="text/css" href="measurement.css"> 
+  <link rel="stylesheet" type="text/css" href="basicUIPagesStyle.css">
+  <style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;1,300&display=swap');</style>
+  <script defer type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="fili.min.js"></script>
+  <script defer type="text/javascript" src="measurement.js"></script>
+  </head>
+  <body>
+  <!-- <H1> Go to results Page: <a href="hrResults.html"> hr Results Page</a></H1> -->
+
+  <a href="hrPage4.html"><img src="arrowBlue.png" width="28px" height="28px"></a>
+  <div id="progressBox" class=".helpText">Move the fingerprint into<br> the circle by shifting your<br> finger</div>
+  <!-- POP UP Help Menu Code -->
+  <div class="popup" id="popup-1">
+    <div class="overlay"></div>
+    <div class="content" class=".helpText">
+        <div class="close-btn" onclick="toggleHelpPopup()"><div id="xHelp"><img src="gray_x_image.png" width="20px" height="20px" ></div></div>
+        <img id="questionMark" src="questionMarkImage.png" width="20px" height="20px">
+        <div id="helpTitle" > <b>Help</b></div>
+        <div id ="helpTextTopLight"><b>Lighting</b></div> 
+        <div id="helpTextTopMidLight">Turn on the flashlight<br>&ensp;&nbsp;button for even lighting<br> </div>
+        <div id ="helpTextTopHold"><b>Hold Still</b></div> 
+        <div id="helpTextTopMidHold">&emsp;&ensp;&ensp;When your finger is aligned <br> &emsp;&ensp;within the circle, hold still <br>as the phone measures </div>
+    </div>
+  </div>
+  <button id="buttonHelp" onclick="toggleHelpPopup()"><b>Help</b></button>
+
+
+  <!--Video Feed Code-->
+  <div id="hrBPMDisplay" class="panel">
+    (Keeping Temporarily:) Heart rate: <span id="heartRate"></span> BPM
+  </div>
+
+  <div>
+    <video autoplay id="measurementVideo" hidden></video>
+    <canvas id="measurementCanvas"></canvas>
+  </div>
+
+  <!--<div id="footer" class="panel">
+    Footer
+  </div>-->
+  </body>
+</html>
+
+
+
+<!-- edited, will go back and change to proper UI once Results page is pushed
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Health Usability</title>
+  <link rel="stylesheet" type="text/css" href="basicUIPagesStyle.css">
+  <link rel="stylesheet" type="text/css" href="measurement.css">
+  <script defer type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="fili.min.js"></script>
+  <script defer type="text/javascript" src="measurement.js"></script>
+</head>
+<body>
+  <a href="hrPage3.html"><div id="arrow"><img src="arrowBlue.png" width="70px" height="70px" ></div></a>
+  <div id="header" class="panel">
+    Heart rate: <span id="heartRate"></span> BPM
+  </div>
+
+  
+    <video autoplay id="measurementVideo" hidden></video>
+    <canvas id="measurementCanvas"></canvas>
+ 
+
+  <div id="footer" class="panel">
+    Footer
+  </div>
+</body>
+</html> -->
+
+<!-- previous code in case I make a boo boo: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Health Usability</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="measurement.css">
+  <script defer type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="fili.min.js"></script>
+  <script defer type="text/javascript" src="measurement.js"></script>
+</head>
+<body>
+  <div id="header" class="panel">
+    Heart rate: <span id="heartRate"></span> BPM
+  </div>
+
+  <div id="content" class="panel">
+    <video autoplay id="measurementVideo" hidden></video>
+    <canvas id="measurementCanvas"></canvas>
+  </div>
+
+  <div id="footer" class="panel">
+    Footer
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+ edited, will go back and change to proper UI once Results page is pushed
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Health Usability</title>
+  <link rel="stylesheet" type="text/css" href="basicUIPagesStyle.css">
+  <link rel="stylesheet" type="text/css" href="measurement.css">
+  <script defer type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="fili.min.js"></script>
+  <script defer type="text/javascript" src="measurement.js"></script>
+</head>
+<body>
+  <a href="hrPage3.html"><div id="arrow"><img src="arrowBlue.png" width="70px" height="70px" ></div></a>
+  <div id="header" class="panel">
+    Heart rate: <span id="heartRate"></span> BPM
+  </div>
+
+  
+    <video autoplay id="measurementVideo" hidden></video>
+    <canvas id="measurementCanvas"></canvas>
+ 
+
+  <div id="footer" class="panel">
+    Footer
+  </div>
+</body>
+</html> -->
+
+<!-- previous code in case I make a boo boo: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Health Usability</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="measurement.css">
+  <script defer type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="fili.min.js"></script>
+  <script defer type="text/javascript" src="measurement.js"></script>
+</head>
+<body>
+  <div id="header" class="panel">
+    Heart rate: <span id="heartRate"></span> BPM
+  </div>
+
+  <div id="content" class="panel">
+    <video autoplay id="measurementVideo" hidden></video>
+    <canvas id="measurementCanvas"></canvas>
+  </div>
+
+  <div id="footer" class="panel">
+    Footer
+  </div>
+</body>
+</html>
+--> 
+--> 
