@@ -15,9 +15,49 @@
   </head>
   <body>
   <!-- <H1> Go to results Page: <a href="hrResults.html"> hr Results Page</a></H1> -->
-
+    <script>
+      var running = true; 
+    </script>
   <a href="hrPage4.html"><img src="arrowBlue.png" width="28px" height="28px"></a>
-  <div id="progressBox">Move the fingerprint into<br> the circle by shifting your<br> finger</div>
+  <div id="progressBox">
+  <!--Progress Bar Code (nested in progressBox id/div)-->
+    <div class="skill">
+      <div class="outer"></div>
+          <div class="inner"></div>
+            <svg width="150px" height="150px">
+              <defs>
+                  <stop  offset="0%" stop-color= #074EE8/>
+                  <stop offset="100%" stop-color= #074EE8/> <!--stop-color= #074EE8-->
+              </defs>
+              <circle  id="colorChanger" cx="74" cy="74" r="37" stroke-linecap="round" />
+      </svg>
+              <div id="number"></div>
+          
+            </div>
+      
+  </div>
+  <script>         
+      var testComplete = false;   
+      let number = document.getElementById("number");
+      let counter = 0;
+      setInterval(() => {     
+          if(counter == 100){
+              testComplete = true; 
+              document.getElementById('colorChanger').style.stroke= '#2EAF26';
+              testComplete = true;             
+          } else{
+              if(fingerPlaced){
+              counter += 1;
+              number.innerHTML = counter + "%";
+              } else{
+                  document.getElementById('colorChanger').style.stroke= '#ffffff';
+                  counter = 0;
+              }
+          } 
+      }, 300); //miliseconds 
+      
+  </script>
+</div>
   <!-- POP UP Help Menu Code -->
   <div class="popup" id="popup-1">
     <div class="overlay"></div>
@@ -28,21 +68,29 @@
         <div id ="helpTextTopLight"><b>Lighting</b></div> 
         <div id="helpTextTopMidLight">Turn on the flashlight<br>&ensp;&nbsp;button for even lighting<br> </div>
         <div id ="helpTextTopHold"><b>Hold Still</b></div> 
-        <div id="helpTextTopMidHold">&emsp;&ensp;&ensp;When your finger is aligned <br> &emsp;&ensp;within the circle, hold still <br>as the phone measures </div>
+        <div id="helpTextTopMidHold">&emsp;&ensp;&ensp;When your finger is aligned 
+        <br> &emsp;&ensp;within the circle, hold still <br>&ensp; as the phone measures </div>
     </div>
   </div>
   <button id="buttonHelp" onclick="toggleHelpPopup()"><b>Help</b></button>
 
 
   <!--Video Feed Code  <span id="heartRate"></span> -->
+
+ <!--Practice pop up change js DOM-->
+ <div  class="firstMessage" id="changeText">
+  Move the fingerprint into the circle by shifting your finger
+</div>  
+ 
+
   <div id="hrBPMDisplay" class="panel">
-    (Keeping Temporarily:) Heart rate:  BPM
+    (Keeping Temporarily:) Heart rate:   BPM
   </div>
 
   <div>
     <video autoplay id="measurementVideo" hidden></video>
     <canvas id="measurementCanvas"></canvas>
-  
+  </div>
   </body>
 </html>
 
