@@ -7,20 +7,23 @@
   <title>Mobile Health Usability</title>
   <link rel="stylesheet" type="text/css" href="measurement.css"> 
   <link rel="stylesheet" type="text/css" href="basicUIPagesStyle.css">
+ <!--Re-import Google Font! -->
  
-  <style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300,700;1,300&display=swap');</style>
-  <script defer type="text/javascript" src="app.js"></script>
+  
   <script type="text/javascript" src="fili.min.js"></script>
   <script defer type="text/javascript" src="measurement.js"></script>
   </head>
   <body>
   <!-- <H1> Go to results Page: <a href="hrResults.html"> hr Results Page</a></H1> -->
+
     <script>
       var running = true; 
     </script>
   <a href="hrPage4.html"><img src="arrowBlue.png" width="28px" height="28px"></a>
   <div id="progressBox">
   <!--Progress Bar Code (nested in progressBox id/div)-->
+  
+    
     <div class="skill">
       <div class="outer"></div>
           <div class="inner"></div>
@@ -30,12 +33,15 @@
                   <stop offset="100%" stop-color= #074EE8/> <!--stop-color= #074EE8-->
               </defs>
               <circle  id="colorChanger" cx="74" cy="74" r="37" stroke-linecap="round" />
-      </svg>
+            </svg>
               <div id="number"></div>
           
             </div>
       
   </div>
+
+
+
   <script>         
       var testComplete = false;   
       let number = document.getElementById("number");
@@ -43,8 +49,7 @@
       setInterval(() => {     
           if(counter == 100){
               testComplete = true; 
-              document.getElementById('colorChanger').style.stroke= '#2EAF26';
-              testComplete = true;             
+              document.getElementById('colorChanger').style.stroke= '#2EAF26';            
           } else{
               if(fingerPlaced){
               counter += 1;

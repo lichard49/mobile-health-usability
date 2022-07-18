@@ -150,17 +150,17 @@ var fingerPlaced = true; //will help stop progress bar - current bug with reload
 //text changes when different events occur and text/directions to user
 //need to be changed. 
 const textChange = document.getElementById("changeText");
-textChange.innerHTML = "Measurement complete!";
+
 
 //first text "move finger..."
-while(running){
-  if(!fingerPlaced){
+ setInterval(() => {
+  if(running){
+  if(fingerPlaced){
     textChange.innerHTML = "Measuring your heart rate. Hold still.";
-    if(textComplete){
+    if(testComplete){
       textChange.innerHTML = "Measurement Complete!"
       //go to results page
     }
   } else{
     textChange.innerHTML = "We're having trouble detecting your finger. Move the fingerprint to the circle. Hold still once your finger is aligned.";
-  }
-}
+  }}}); 
