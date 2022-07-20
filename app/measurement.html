@@ -23,16 +23,16 @@
   <div id="progressBox">
   <!--Progress Bar Code (nested in progressBox id/div)-->
   
-    
+  <img src="yellowHelpQuestionMark.png"  id="yllwQMark">
     <div class="skill">
-      <div class="outer"></div>
-          <div class="inner"></div>
-            <svg width="150px" height="150px">
+      <div class="outer" id="outerId"></div>
+          <div class="inner" id="innerId"></div>
+            <svg id = "svgId" width="150px" height="150px">
               <defs>
                   <stop  offset="0%" stop-color= #074EE8/>
                   <stop offset="100%" stop-color= #074EE8/> <!--stop-color= #074EE8-->
               </defs>
-              <circle  id="colorChanger" cx="74" cy="74" r="37" stroke-linecap="round" />
+              <circle  id="circleFiller" cx="74" cy="74" r="37" stroke-linecap="round" />
             </svg>
               <div id="number"></div>
           
@@ -45,18 +45,17 @@
   <script>         
       var testComplete = false;   
       let number = document.getElementById("number");
-      let counter = 0;
       setInterval(() => {     
           if(counter == 100){
               testComplete = true; 
-              document.getElementById('colorChanger').style.stroke= '#2EAF26';            
+              document.getElementById('circleFiller').style.stroke= '#2EAF26';            
           } else{
+            
               if(fingerPlaced){
               counter += 1;
               number.innerHTML = counter + "%";
               } else{
-                  document.getElementById('colorChanger').style.stroke= '#ffffff';
-                  counter = 0;
+                counter = 0;
               }
           } 
       }, 300); //miliseconds 

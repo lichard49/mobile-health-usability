@@ -214,7 +214,7 @@
 }
 
 
-.outer{
+#outerId{
   margin-top: 6px;
   margin-left: 26px;
   position: absolute; 
@@ -226,7 +226,7 @@
  
 }
 
-.inner{
+#innerId{
   margin-top:  25px;
   margin-left: 20px;
   height: 80px;
@@ -249,19 +249,19 @@
   color: rgb(0, 0, 0);
 }
 
-circle{
+#circleFiller{
   fill: none; /*Can add colors*/
   /*stroke: cornflowerblue; Outline*/
 
-  stroke: #074EE8;
+  stroke: #074EE8; /*#074EE8;*/
   stroke-width: 5px;
   stroke-dasharray: 295; /*percent shaded, 472 = complete circle*/
   stroke-dashoffset: 300; /*hides certain percent*/
-  animation: anim 30s linear forwards;
+  
 }
 
 
-svg{
+#svgId{
   position: absolute;
   top: -35.5px;
   left: -13.5px;
@@ -276,6 +276,14 @@ covered completly) - 472(0.%)*/
   }
 }
 
+
+#yllwQMark{
+  margin-top: 30px;
+  margin-left: -500px;
+  position:absolute;
+  width: 70px;
+  height:70px;
+}
 
 /*
 stop{

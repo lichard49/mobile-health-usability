@@ -143,7 +143,7 @@ function toggleHelpPopup(){
 }
 
 //Varaibles for the Progress Bar 
-var fingerPlaced = true; //will help stop progress bar - current bug with reloading
+var fingerPlaced = false; //will help stop progress bar - current bug with reloading
 //testComplete var in <style> in measurement.html file
 
 //Code that changes text in id="progressBox"
@@ -151,16 +151,41 @@ var fingerPlaced = true; //will help stop progress bar - current bug with reload
 //need to be changed. 
 const textChange = document.getElementById("changeText");
 
-
+let counter = 0; 
 //first text "move finger..."
  setInterval(() => {
   if(running){
+   
   if(fingerPlaced){
+    //move help image out 
+    document.getElementById('yllwQMark').style.marginLeft = "-500px";
+    //move progress bar in
+    document.getElementById('innerId').style.marginLeft = "20px";
+    document.getElementById('outerId').style.marginLeft = "26px";
+    //add animation 
+    document.getElementById('circleFiller').style.animation = "anim 30s linear forwards"; 
+    //set counter to 0
+    
+    //change display message   
     textChange.innerHTML = "Measuring your heart rate. Hold still.";
     if(testComplete){
       textChange.innerHTML = "Measurement Complete!"
       //go to results page
     }
   } else{
+    //move bar out
+    document.getElementById('innerId').style.marginLeft = "-500px";
+    document.getElementById('outerId').style.marginLeft = "-500px";
+    //make animation = null
+    document.getElementById('circleFiller').style.animation = "null";
+    //move help image in
+    document.getElementById('yllwQMark').style.marginLeft = "10px";
+    //display message
     textChange.innerHTML = "We're having trouble detecting your finger. Move the fingerprint to the circle. Hold still once your finger is aligned.";
+    counter = 0;
   }}}); 
+
+
+  
+    
+  
