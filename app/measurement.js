@@ -142,20 +142,13 @@ function toggleHelpPopup(){
   document.getElementById("popup-1").classList.toggle("active");
 }
 
-//Varaibles for the Progress Bar 
-var fingerPlaced = false; //will help stop progress bar - current bug with reloading
-//testComplete var in <style> in measurement.html file
-
-//Code that changes text in id="progressBox"
-//text changes when different events occur and text/directions to user
-//need to be changed. 
-const textChange = document.getElementById("changeText");
+//Varaibles for the Progress Bar & Changing Messages Displayed
+var fingerPlaced = true;
 
 let counter = 0; 
 //first text "move finger..."
  setInterval(() => {
   if(running){
-   
   if(fingerPlaced){
     //move help image out 
     document.getElementById('yllwQMark').style.marginLeft = "-500px";
@@ -164,12 +157,14 @@ let counter = 0;
     document.getElementById('outerId').style.marginLeft = "26px";
     //add animation 
     document.getElementById('circleFiller').style.animation = "anim 30s linear forwards"; 
-    //set counter to 0
-    
+
     //change display message   
-    textChange.innerHTML = "Measuring your heart rate. Hold still.";
+    document.getElementById("firstMessage").style.marginLeft = "-500px";
+    document.getElementById("secondMessage").style.marginLeft = "5px";
+
     if(testComplete){
-      textChange.innerHTML = "Measurement Complete!"
+      document.getElementById("secondMessage").style.marginLeft = "-500px";
+      document.getElementById("thirdMessage").style.marginLeft = "5px";
       //go to results page
     }
   } else{
@@ -180,8 +175,12 @@ let counter = 0;
     document.getElementById('circleFiller').style.animation = "null";
     //move help image in
     document.getElementById('yllwQMark').style.marginLeft = "10px";
-    //display message
-    textChange.innerHTML = "We're having trouble detecting your finger. Move the fingerprint to the circle. Hold still once your finger is aligned.";
+    //display proper message
+    document.getElementById("secondMessage").style.marginLeft = "-500px";
+    document.getElementById("thirdMessage").style.marginLeft = "-500px";
+    document.getElementById("firstMessage").style.marginLeft = "-500px";
+    document.getElementById("fourthMessage").style.marginLeft = "-75px";
+    //reset "timer"
     counter = 0;
   }}}); 
 
