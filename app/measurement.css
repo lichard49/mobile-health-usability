@@ -1,5 +1,29 @@
 /*Style for Heart Rate Measurement Page*/
+#buttonFlashlight{
+  width:45px;
+  height: 45px;
+  position: absolute;
+  margin-top: 580px;
+  margin-left: 265px;
+}
 
+#circleFlash{
+  position:absolute;
+  margin-top: -45px;
+  margin-left: -35px;
+}
+
+#flashOn{
+  position: absolute;
+  top: 620px;
+  left: 287px;
+}
+
+#flashOff{
+  position: absolute;
+  top: 616px;
+  left: -500px; /*285.5px <-- when in*/
+}
 #measurementCanvas {
   width: 400px;
   height: 480px;
@@ -7,6 +31,7 @@
   margin-top: 207px;
 
 }
+
 
 #hrBPMDisplay{
   margin-top: 175px;

@@ -1,5 +1,5 @@
 
-
+//https://www.youtube.com/watch?v=yWexyb0VkLI <-- image button fixer
 const sampleRate = 100; // Hz
 const samplePeriod = 1 / sampleRate * 1000; // ms
 
@@ -111,8 +111,9 @@ function processCameraFrame() {
 }
 
 let isFlashlightOn = false;
-
+document.getElementById("buttonFlashlight").src = "flashlightOff.png"; 
 function toggleFlashlight() {
+  
     isFlashlightOn = !isFlashlightOn;
     const track = measurementVideo.srcObject.getVideoTracks()[0];
     track.applyConstraints({
@@ -141,6 +142,23 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
 function toggleHelpPopup(){
   document.getElementById("popup-1").classList.toggle("active");
 }
+/*
+var flashCounter = 0;
+function toggleFlashImg(){
+  if((flashcounter % 2) == 0){
+    //even --> flash turn On button in
+    document.getElementById('flashOff').style.left = "-500px";
+    document.getElementById('flashOn').style.left = "287px";
+    flashCounter++
+  } else{
+    //odd --> flash turn Off button in 
+    document.getElementById('flashOn').style.left = "-500px";
+    document.getElementById('flashOff').style.left = "285.5px";
+    flashCounter++;
+  }
+  
+}*/
+
 
 //Varaibles for the Progress Bar & Changing Messages Displayed
 var fingerPlaced = true;
