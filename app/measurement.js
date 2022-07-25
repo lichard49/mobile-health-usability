@@ -111,8 +111,16 @@ function processCameraFrame() {
 }
 
 let isFlashlightOn = false;
-document.getElementById("buttonFlashlight").src = "flashlightOff.png"; 
+var flashCounter = 0;
+
 function toggleFlashlight() {
+  if (flashCounter % 2 == 0){
+    document.getElementById("circleFlash").src = "flashOn.png";
+    flashCounter++;
+  }else{
+    document.getElementById("circleFlash").src = "flashOff.png";
+    flashCounter++;
+  }
   
     isFlashlightOn = !isFlashlightOn;
     const track = measurementVideo.srcObject.getVideoTracks()[0];
@@ -120,6 +128,7 @@ function toggleFlashlight() {
       advanced: [{torch: isFlashlightOn}]
     });
 }
+
 
 if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
   navigator.mediaDevices.getUserMedia({ video: {
@@ -140,24 +149,10 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
 //Hana's additions: 
 //Help toggle Menu
 function toggleHelpPopup(){
+  
   document.getElementById("popup-1").classList.toggle("active");
 }
-/*
-var flashCounter = 0;
-function toggleFlashImg(){
-  if((flashcounter % 2) == 0){
-    //even --> flash turn On button in
-    document.getElementById('flashOff').style.left = "-500px";
-    document.getElementById('flashOn').style.left = "287px";
-    flashCounter++
-  } else{
-    //odd --> flash turn Off button in 
-    document.getElementById('flashOn').style.left = "-500px";
-    document.getElementById('flashOff').style.left = "285.5px";
-    flashCounter++;
-  }
-  
-}*/
+
 
 
 //Varaibles for the Progress Bar & Changing Messages Displayed
@@ -184,6 +179,7 @@ let counter = 0;
       document.getElementById("secondMessage").style.marginLeft = "-500px";
       document.getElementById("thirdMessage").style.marginLeft = "5px";
       //go to results page
+      window.location.replace("hrResults.html");
     }
   } else{
     //move bar out

@@ -8,6 +8,7 @@ https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wj
 /*CSS for the Home Page:*/
 #telehealth{
     position: absolute;
+    position: absolute;
     width: 900px;
     height: 90px;
     left: 60px;
@@ -321,30 +322,32 @@ a:link, a:visited {
 
 /*Style for hrResults page */
 #x{
-    top: 80px;
+    top: 10px;
     left: 70px;
 }
 
 #xText{
-    top: 38px;
-    left: 120px;
+    top: 17px;
+    left: 50px;
     position: absolute;
     width: 450px;
     height: 26px;
     font-family: 'IBM Plex Sans';
     font-style: normal;
     font-weight: 500;
-    font-size: 50px;
+    font-size: 20px;
     line-height: 26px;
     color: #000000;
 }
+
 #boxResults{
     box-sizing: border-box;
     position: absolute;
-    width: 900px;
-    height: 500px;
-    left: 70px;
-    top: 150px;
+    position: absolute;
+    width: 362px;
+    height: 235px;
+    left: 15px;
+    top: 80px;
     background: #FFFFFF;
     border: 4px solid #3771E0;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
@@ -355,12 +358,12 @@ a:link, a:visited {
     position: absolute;
     width: 250px;
     height: 26px;
-    left: 320px;
-    top: 80px;
+    left: 50px;
+    top: 30px;
     font-family: 'IBM Plex Sans';
     font-style: normal;
     font-weight: 500;
-    font-size: 50px;
+    font-size: 25px;
     line-height: 26px;
     text-align: center;
     color: #000000;
@@ -370,12 +373,12 @@ a:link, a:visited {
     position: absolute;
     width: 250px;
     height: 30px;
-    left: 310px;
-    top: 110px;
+    left: 40px;
+    top: 60px;
     font-family: 'IBM Plex Sans';
     font-style: normal;
-    font-weight: 500;
-    font-size: 90px;
+    font-weight: 20;
+    font-size: 35px;
     line-height: 26px;
     text-align: center;
     color: #074EE8;
@@ -385,12 +388,12 @@ a:link, a:visited {
     position: absolute;
     width: 400px;
     height: 26px;
-    left: 240px;
-    top: 370px;
+    left: -27px;
+    top: 170px;
     font-family: 'IBM Plex Sans';
     font-style: normal;
     font-weight: 500;
-    font-size: 50px;
+    font-size: 20px;
     line-height: 26px;    
     text-align: center;
     color: #000000;
@@ -400,13 +403,13 @@ a:link, a:visited {
     position: absolute;
     width: 1000px;
     height: 100px;
-    left: 80px;
-    top: 700px;
+    left: 20px;
+    top: 350px;
     font-family: 'IBM Plex Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 50px;
-    line-height: 60px;
+    font-size: 20px;
+    line-height: 25px;
     color: #000000;
 }
 
