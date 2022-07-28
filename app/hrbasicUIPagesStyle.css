@@ -4,6 +4,7 @@ https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wj
 */
 
 
+/*Heart Rate CSS Only*/
 
 /*CSS for the Home Page:*/
 #telehealth{
@@ -124,7 +125,8 @@ https://docs.google.com/presentation/d/1-_FpFF140Xc9qONxjbvTLqgxU9JljpNpbkdHH8wj
 }
 
 
-/* The CSS for all basic UI pages*/
+/* The CSS for all basic UI pages for Heart Rate
+(all but measurement page) */
 
 #arrow{
     height: 14px;
@@ -437,4 +439,6 @@ a:link, a:visited {
     line-height: 30px;
     color: #000000;
 }
+
+
 

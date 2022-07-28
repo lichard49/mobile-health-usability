@@ -1,0 +1,120 @@
+#boxPg1{
+    box-sizing: border-box;
+    position: absolute;
+    width: 900px;
+    height: 330px;
+    left: 90px;
+    top: 90px;
+    background: #FFFFFF;
+    border: 3px solid #3771E0;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+}
+
+#boxText1{
+    position: absolute;
+    height: 90px;
+    left: 37px;
+    right: 37px;
+    top: 60px;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 55px;
+    line-height: 65px;
+    text-align: center;
+    color: #000000;
+}
+
+#boxText2{
+    position: absolute;
+    height: 90px;
+    left: 37px;
+    right: 37px;
+    top: 90px;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 55px;
+    line-height: 65px;
+    text-align: center;
+    color: #000000;
+}
+
+#buttonCancel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    margin-top: 1550px;
+    margin-left: 25px;
+    position: absolute;
+    width: 230px;
+    height: 110px;
+    background: #ffffff;
+    border-radius: 10px;
+    border-style: solid;
+    border-color:#ffffff;
+    color:#3771E0;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 18px;
+}
+
+#buttonNext{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    position: absolute;
+    width: 230px;
+    height: 110px;
+    left: 650px;
+    top: 1550px;   
+    background: #074EE8;
+    border-radius: 10px;
+    border-style: solid;
+    border-color:#074EE8;
+    color:white;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 18px;
+}
+
+#rrImg{
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    top: 500px;
+}
+
+#boxTextGif{
+    position: absolute;
+    height: 90px;
+    left: 37px;
+    right: 37px;
+    top: 50px;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 75px;
+    text-align: center;
+    color: #000000;
+}
+
+#rrGifImg{
+    position: absolute;
+    height: 500px;
+    width: 500px; 
+    top: 800px;
+    left: 300px;
+}
