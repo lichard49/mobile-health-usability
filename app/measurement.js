@@ -101,13 +101,17 @@ function processCameraFrame() {
   filteredSignal = lowPassFilter.multiStep(windowedSignal);
   filteredSignal = highPassFilter.multiStep(filteredSignal);
 
-  const fftResult = fft.forward(filteredSignal, 'none');
-  const fftMagnitude = fft.magnitude(fftResult); // magnitude
-  const fftMagnitudeDb = fft.magToDb(fftMagnitude); // magnitude in dB
-  const fftMaxBin = argMax(fftMagnitudeDb);
-  const fftMaxFrequency = fftMaxBin * sampleRate / windowSize; // Hz
-  const heartRateBpm = fftMaxFrequency * 60; // BPM
-  heartRate.innerText = heartRateBpm;
+  let peaks = 0;
+  for (let index = 10; index < filteredSignal.length - 10; index++) {
+    if (filteredSignal[index - 1] < filteredSignal[index] && filteredSignal[index] > filteredSignal[index + 1]) {
+      if (filteredSignal[index] - filteredSignal[index - 10] > 0.0005 && filteredSignal[index] - filteredSignal[index + 10] > 0.0005) {
+        peaks++;
+      }
+    }
+  }
+
+  const heartRateBpm = peaks * 60 / (windowSize / sampleRate) / 2;
+  heartRate.innerText = Math.round(heartRateBpm);
 }
 
 let isFlashlightOn = false;
