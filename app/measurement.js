@@ -183,7 +183,7 @@ let counter = 0;
       document.getElementById("secondMessage").style.marginLeft = "-500px";
       document.getElementById("thirdMessage").style.marginLeft = "5px";
       //go to results page
-      window.location.replace("hrResults.html");
+      /*window.location.replace("hrResults.html");*/
     }
   } else{
     //move bar out
