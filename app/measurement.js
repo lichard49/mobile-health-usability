@@ -1,4 +1,3 @@
-
 //https://www.youtube.com/watch?v=yWexyb0VkLI <-- image button fixer
 const sampleRate = 100; // Hz
 const samplePeriod = 1 / sampleRate * 1000; // ms
@@ -158,51 +157,91 @@ function toggleHelpPopup(){
 }
 
 
+var fingerPlaced = null;
 
-//Varaibles for the Progress Bar & Changing Messages Displayed
-var fingerPlaced = true;
+//Getting x & y coordiantes practice
+//Coordinates of Oval
+let ovalEl = document.getElementById("oval");
+var oTopCoord = window.scrollY + ovalEl.getBoundingClientRect().top// top
+var oBottCoord = window.scrollX + ovalEl.getBoundingClientRect().bottom// bottom
+var oLeftCoord = window.scrollX + ovalEl.getBoundingClientRect().left// left
+var oRightCoord = window.scrollX + ovalEl.getBoundingClientRect().right// right
+console.log("Oval = top: " + oTopCoord + " bottCoord: " + oBottCoord + " leftCoord: " + oLeftCoord + " rightCoord: " + oRightCoord);
+//Temporary Starting Coordiantes --> Oval = top: 315 bottCoord: 485 leftCoord: 138 rightCoord: 238
 
-let counter = 0; 
-//first text "move finger..."
- setInterval(() => {
-  if(running){
-  if(fingerPlaced){
-    //move help image out 
-    document.getElementById('yllwQMark').style.marginLeft = "-500px";
-    //move progress bar in
-    document.getElementById('innerId').style.marginLeft = "20px";
-    document.getElementById('outerId').style.marginLeft = "26px";
-    //add animation 
-    document.getElementById('circleFiller').style.animation = "anim 30s linear forwards"; 
+//Starting Coordinates of Fingerprint
+let fingerEl = document.getElementById("finger");
+var fTopCoord = window.scrollY + fingerEl.getBoundingClientRect().top// top
+var fBottCoord = window.scrollX + fingerEl.getBoundingClientRect().bottom// bottom
+var fLeftCoord = window.scrollX + fingerEl.getBoundingClientRect().left// left
+var fRightCoord = window.scrollX + fingerEl.getBoundingClientRect().right// right
+console.log("Finger = top: " + fTopCoord + " bottCoord: " + fBottCoord + " leftCoord: " + fLeftCoord + " rightCoord: " + fRightCoord);
 
-    //change display message   
-    document.getElementById("firstMessage").style.marginLeft = "-500px";
-    document.getElementById("secondMessage").style.marginLeft = "5px";
+//testing if fingerprint is within the Oval: 
 
-    if(testComplete){
-      document.getElementById("secondMessage").style.marginLeft = "-500px";
-      document.getElementById("thirdMessage").style.marginLeft = "5px";
-      //go to results page
-      /*window.location.replace("hrResults.html");*/
-    }
-  } else{
-    //move bar out
-    document.getElementById('innerId').style.marginLeft = "-500px";
-    document.getElementById('outerId').style.marginLeft = "-500px";
-    //make animation = null
-    document.getElementById('circleFiller').style.animation = "null";
-    //move help image in
-    document.getElementById('yllwQMark').style.marginLeft = "10px";
-    //display proper message
+var timer = 0;
+fingerPlaced = false;
+let counter = 0;
+setInterval(() => {
+  document.getElementById('rectangle').style.display = "none";
+  if(315 < fTopCoord && fBottCoord < 485 && 138 < fLeftCoord && fRightCoord < 238){ 
+    fingerPlaced = true;
+    fingerIn();
+    timer = 0; 
+  } else if(timer > 60) {
+    fingerPlaced = false;
+    fingerOut();
+    timer++;
+  }else{
+    document.getElementById('oval').src = "dashed_oval.png";
+    timer++;
+  }
+}, 600); //miliseconds
+
+function fingerOut(){
+  document.getElementById('oval').src = "dashed_oval.png";
+  //move bar out
+  document.getElementById('innerId').style.marginLeft = "-500px";
+  document.getElementById('outerId').style.marginLeft = "-500px";
+  //make animation = null
+  document.getElementById('circleFiller').style.animation = "null";
+  //move help image in
+  document.getElementById('yllwQMark').style.marginLeft = "10px";
+  //change background
+  document.getElementById('rectangle').style.display = "block";
+  //display proper message
+  document.getElementById("secondMessage").style.marginLeft = "-500px";
+  document.getElementById("thirdMessage").style.marginLeft = "-500px";
+  document.getElementById("firstMessage").style.marginLeft = "-500px";
+  document.getElementById("fourthMessage").style.marginLeft = "-75px";
+  
+}
+
+function fingerIn(){
+  document.getElementById('rectangle').style.display = "none";
+
+  document.getElementById('oval').src = "green_oval.png";
+
+  //move help image out 
+  document.getElementById('yllwQMark').style.marginLeft = "-500px";
+  //move progress bar in
+  document.getElementById('innerId').style.marginLeft = "20px";
+  document.getElementById('outerId').style.marginLeft = "26px";
+  //add animation 
+  document.getElementById('circleFiller').style.animation = "anim 30s linear forwards"; 
+
+  //change display message   
+  document.getElementById("firstMessage").style.marginLeft = "-500px";
+  document.getElementById("secondMessage").style.marginLeft = "5px";
+
+  if(testComplete){
     document.getElementById("secondMessage").style.marginLeft = "-500px";
-    document.getElementById("thirdMessage").style.marginLeft = "-500px";
-    document.getElementById("firstMessage").style.marginLeft = "-500px";
-    document.getElementById("fourthMessage").style.marginLeft = "-75px";
-    //reset "timer"
-    counter = 0;
-  }}}); 
+    document.getElementById("thirdMessage").style.marginLeft = "5px";
+    //go to results page
+    window.location.replace("hrResults.html");
+  }
+}
 
 
-  
-    
-  
+
+

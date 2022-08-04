@@ -3,8 +3,8 @@
   width:45px;
   height: 45px;
   position: absolute;
-  margin-top: 600px;
-  margin-left: 300px;
+  margin-top: -70px;
+  margin-left: 320px;
 }
 
 #circleFlash{
@@ -380,3 +380,33 @@ covered completly) - 472(0.%)*/
 stop{
   stop-color: #074EE8; /*#2EAF26 <-- green color to switch
 } */
+
+
+#oval{
+  position: absolute;
+  left:130px;
+  top:100px;
+}
+
+#finger{
+  position: absolute;
+  left:150px;
+  top:140px;
+
+  /*Centered: 
+   left:150px;
+   top:140px; 
+  */
+}
+
+#rectangle{
+  position: absolute;
+  width: 400px;
+  height: 480px;
+  background:  rgba(109, 109, 109, 0.6);
+  margin-left: -10px;
+  margin-top: 207px;
+}
+
+
+

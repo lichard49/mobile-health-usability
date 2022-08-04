@@ -16,9 +16,7 @@
   <body>
   <!-- <H1> Go to results Page: <a href="hrResults.html"> hr Results Page</a></H1> -->
 
-    <script>
-      var running = true; 
-    </script>
+
   <a href="hrPage4.html"><img src="arrowBlue.png" width="28px" height="28px"></a>
   <div id="progressBox">
   <!--Progress Bar Code (nested in progressBox id/div)-->
@@ -54,8 +52,12 @@
               if(fingerPlaced){
               counter += 1;
               number.innerHTML = counter + "%";
-              } else{
+              } else if(!fingerPlaced && timer < 60){
                 counter = 0;
+                number.innerHTML = counter + "%";
+              }else{
+                counter = 0;
+                number.innerHTML = null;
               }
           } 
       }, 300); //miliseconds 
@@ -99,19 +101,25 @@
  
 
   <div id="hrBPMDisplay" class="panel">
+    <img id="oval" src="dashed_oval.png" width="100px" height="170px">
+    <img id="finger" src="transparent_fingerprint.png" width="70px" height="100px">
     (Keeping Temporarily:) Heart rate:  <span id="heartRate"></span> BPM
   </div>
 
-  <button id="buttonFlashlight" onclick="toggleFlashlight()">flash
-  <img id="circleFlash" src="flashOff.png" width="65px" height="65px">
-  </button>
+
   
   
   <div>
+    <div id="rectangle">
+    
+    </div>
     <video autoplay id="measurementVideo" hidden></video>
-    <canvas id="measurementCanvas"></canvas>
+    <canvas id="measurementCanvas">
+    </canvas>
+    <button id="buttonFlashlight" onclick="toggleFlashlight()">flash
+      <img id="circleFlash" src="flashOff.png" width="65px" height="65px">
+      </button>
   </div>
   </body>
+
 </html>
-
-
