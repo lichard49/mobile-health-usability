@@ -83,6 +83,36 @@ function argMax(array) {
 
 const heartRate = document.getElementById('heartRate');
 
+//returns a Boolean and takes an array from ImageData.data
+// call this with the parameter measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data
+function isFingerOnCamera(fullImage) {
+  // DEBUG:
+  //heartRate.innerHTML = "isFingerOnCamera " + false;
+
+  let redPixels = 0;
+  const redThreshold = 120000; //approximately 1/3rd of the screen
+  for (let i = 0; i < fullImage.length; i++) {
+    const red = fullImage[i + 0];
+    const green = fullImage[i + 1];
+    const blue = fullImage[i + 2];
+
+    // if pixel is red enough. Probably need to tweak this value.
+    // based on list of reds and pinks here: https://htmlcolorcodes.com/colors/shades-of-red/
+    // Other ranges to try: (red >= 200 && blue <= 160 && green <= 160)
+    //   if ((red-blue) > 100 && (red-green) > 100){
+    if(red > 100 && green < 100 && blue < 100){
+      redPixels++;
+      if (redPixels >= redThreshold) {
+        // DEBUG:
+        // heartRate.innerHTML = "isFingerOnCamera " + true;
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+
 function processCameraFrame() {
   const pixel = measurementContext.getImageData(
     measurementCanvas.width/2,
@@ -113,6 +143,7 @@ function processCameraFrame() {
   heartRate.innerText = Math.round(heartRateBpm);
 }
 
+
 let isFlashlightOn = false;
 var flashCounter = 0;
 
@@ -124,7 +155,7 @@ function toggleFlashlight() {
     document.getElementById("circleFlash").src = "flashOff.png";
     flashCounter++;
   }
-  
+
     isFlashlightOn = !isFlashlightOn;
     const track = measurementVideo.srcObject.getVideoTracks()[0];
     track.applyConstraints({
@@ -149,10 +180,10 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
   });
 }
 
-//Hana's additions: 
+//Hana's additions:
 //Help toggle Menu
 function toggleHelpPopup(){
-  
+
   document.getElementById("popup-1").classList.toggle("active");
 }
 
@@ -177,17 +208,17 @@ var fLeftCoord = window.scrollX + fingerEl.getBoundingClientRect().left// left
 var fRightCoord = window.scrollX + fingerEl.getBoundingClientRect().right// right
 console.log("Finger = top: " + fTopCoord + " bottCoord: " + fBottCoord + " leftCoord: " + fLeftCoord + " rightCoord: " + fRightCoord);
 
-//testing if fingerprint is within the Oval: 
+//testing if fingerprint is within the Oval:
 
 var timer = 0;
 fingerPlaced = false;
 let counter = 0;
 setInterval(() => {
   document.getElementById('rectangle').style.display = "none";
-  if(315 < fTopCoord && fBottCoord < 485 && 138 < fLeftCoord && fRightCoord < 238){ 
+  if(315 < fTopCoord && fBottCoord < 485 && 138 < fLeftCoord && fRightCoord < 238){
     fingerPlaced = true;
     fingerIn();
-    timer = 0; 
+    timer = 0;
   } else if(timer > 60) {
     fingerPlaced = false;
     fingerOut();
@@ -214,7 +245,7 @@ function fingerOut(){
   document.getElementById("thirdMessage").style.marginLeft = "-500px";
   document.getElementById("firstMessage").style.marginLeft = "-500px";
   document.getElementById("fourthMessage").style.marginLeft = "-75px";
-  
+
 }
 
 function fingerIn(){
@@ -222,15 +253,15 @@ function fingerIn(){
 
   document.getElementById('oval').src = "green_oval.png";
 
-  //move help image out 
+  //move help image out
   document.getElementById('yllwQMark').style.marginLeft = "-500px";
   //move progress bar in
   document.getElementById('innerId').style.marginLeft = "20px";
   document.getElementById('outerId').style.marginLeft = "26px";
-  //add animation 
-  document.getElementById('circleFiller').style.animation = "anim 30s linear forwards"; 
+  //add animation
+  document.getElementById('circleFiller').style.animation = "anim 30s linear forwards";
 
-  //change display message   
+  //change display message
   document.getElementById("firstMessage").style.marginLeft = "-500px";
   document.getElementById("secondMessage").style.marginLeft = "5px";
 
@@ -241,7 +272,3 @@ function fingerIn(){
     window.location.replace("hrResults.html");
   }
 }
-
-
-
-
