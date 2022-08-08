@@ -1,4 +1,4 @@
-//https://www.youtube.com/watch?v=yWexyb0VkLI <-- image button fixer
+
 const sampleRate = 100; // Hz
 const samplePeriod = 1 / sampleRate * 1000; // ms
 
@@ -81,6 +81,9 @@ function argMax(array) {
   return array.map((x, i) => [x, i]).reduce((r, a) => (a[0] > r[0] ? a : r))[1];
 }
 
+//Hana: creating an arraylist to avg the hr values to display the "final" value at the results page
+var hrArray = [];
+
 const heartRate = document.getElementById('heartRate');
 
 function processCameraFrame() {
@@ -110,6 +113,8 @@ function processCameraFrame() {
   }
 
   const heartRateBpm = peaks * 60 / (windowSize / sampleRate) / 2;
+  hrArray.push(heartRateBpm);
+
   heartRate.innerText = Math.round(heartRateBpm);
 }
 
@@ -152,14 +157,13 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
 //Hana's additions: 
 //Help toggle Menu
 function toggleHelpPopup(){
-  
   document.getElementById("popup-1").classList.toggle("active");
 }
 
 
 var fingerPlaced = null;
 
-//Getting x & y coordiantes practice
+
 //Coordinates of Oval
 let ovalEl = document.getElementById("oval");
 var oTopCoord = window.scrollY + ovalEl.getBoundingClientRect().top// top
@@ -184,7 +188,8 @@ fingerPlaced = false;
 let counter = 0;
 setInterval(() => {
   document.getElementById('rectangle').style.display = "none";
-  if(315 < fTopCoord && fBottCoord < 485 && 138 < fLeftCoord && fRightCoord < 238){ 
+ //later make the #s in the bool statements the varaibles instead
+  if(oTopCoord < fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord){ 
     fingerPlaced = true;
     fingerIn();
     timer = 0; 
@@ -196,7 +201,7 @@ setInterval(() => {
     document.getElementById('oval').src = "dashed_oval.png";
     timer++;
   }
-}, 600); //miliseconds
+}, 600); //miliseconds, waits 1 minute before displaying "help" menu if user's finger is not properly placed
 
 function fingerOut(){
   document.getElementById('oval').src = "dashed_oval.png";
@@ -217,6 +222,8 @@ function fingerOut(){
   
 }
 
+var bpmAvg = 0;
+var hrAverage = 0;
 function fingerIn(){
   document.getElementById('rectangle').style.display = "none";
 
@@ -237,11 +244,28 @@ function fingerIn(){
   if(testComplete){
     document.getElementById("secondMessage").style.marginLeft = "-500px";
     document.getElementById("thirdMessage").style.marginLeft = "5px";
+    const arLength = hrArray.length;
+    /*
+    for(let i = 0; i < arLength; i++){
+      bpmAvg += hrArray[i];
+      console.log("traversing array = " + bpmAvg);
+    }*/
+    hrAverage = hrAvg();
+    console.log("array avg = " + hrAverage)
+  
     //go to results page
     window.location.replace("hrResults.html");
+    document.getElementById("changeHR").innerHTML = hrAverage;
+    
   }
 }
 
 
-
-
+function hrAvg(){
+  const arLength = hrArray.length;
+  for(let i = 0; i < arLength; i++){
+    bpmAvg += hrArray[i];
+  }
+  bpmAvg = bpmAvg / arLength;
+  return bpmAvg;
+}
