@@ -48,16 +48,18 @@
               testComplete = true; 
               document.getElementById('circleFiller').style.stroke= '#2EAF26';            
           } else{
-            
+            //later change it to if fingerPlaced && if fingerInOval <-- proper location for measurments 
               if(fingerPlaced){
               counter += 1;
               number.innerHTML = counter + "%";
               } else if(!fingerPlaced && timer < 60){
                 counter = 0;
                 number.innerHTML = counter + "%";
+                document.getElementById('circleFiller').style.animation = "null";
               }else{
                 counter = 0;
                 number.innerHTML = null;
+                document.getElementById('circleFiller').style.animation = "null";
               }
           } 
       }, 300); //miliseconds 

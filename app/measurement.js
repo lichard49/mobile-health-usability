@@ -111,6 +111,8 @@ function isFingerOnCamera(fullImage) {
       }
     }
   }
+  document.getElementById("secondMessage").style.marginLeft = "-500px";
+  document.getElementById("firstMessage").style.marginLeft = "5px";
   return false;
 }
 
@@ -224,26 +226,53 @@ fingerInOval = false;
 let counter = 0;
 setInterval(() => {
   fingerPlaced = isFingerOnCamera(measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data);
+  //later add if fingerPlaced --> start fingerprint icon tracking
   document.getElementById('rectangle').style.display = "none";
-
- //later make the #s in the bool statements the varaibles instead
-
 
   if(oTopCoord < fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord){
     fingerInOval = true;
-    fingerPlaced = true;
+    if(fingerInOval && fingerPlaced){
+      //this means finger is in frame & in right location
+      timer = 0;
+      fingerIn(); 
+    }
+  }else if(fingerPlaced && !fingerInOval && timer > 60){
+    //finger is in frame but not in the right location and when the user hasn't gone to the right direction for a while
+    fingerOut();
+    timer++;
+    hrArray = null;
+  }else if(fingerPlaced && !fingerInOval && timer <= 60){
+    //finger is not in the oval and the finger is not placed on the screen and it's been less than 60 seconds
+    hrArray = null;
+    document.getElementById('oval').src = "dashed_oval.png";
+    document.getElementById('rectangle').style.display = "none";
+    document.getElementById('circleFiller').style.animation = "null";
+    document.getElementById("secondMessage").style.marginLeft = "-500px";
+    document.getElementById("firstMessage").style.marginLeft = "5px";
+    timer++;
+  }else if(!fingerPlaced){
+    document.getElementById("secondMessage").style.marginLeft = "-500px";
+    document.getElementById("firstMessage").style.marginLeft = "5px";
+  }
 
-    fingerIn();
+  }
+  /*if(oTopCoord < fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord){
+    fingerInOval = true;
+    //fingerPlaced = true;
+    if(fingerInOval && fingerPlaced){
+      fingerIn();
+    }
     timer = 0;
   } else if(timer > 60) {
     fingerInOval = false;
     fingerOut();
     timer++;
   }else{
+    fingerInOval = false;
     document.getElementById('oval').src = "dashed_oval.png";
     timer++;
-  }
-}, 600); //miliseconds, waits 1 minute before displaying "help" menu if user's finger is not properly placed
+  }*/ 
+, 600); //miliseconds, waits 1 minute before displaying "help" menu if user's finger is not properly placed
 
 //if time: go in and fix how messages are hiding, use the hide/show method/function
 function fingerOut(){
