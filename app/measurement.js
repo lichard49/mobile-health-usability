@@ -82,38 +82,10 @@ function argMax(array) {
 }
 
 
+
+
 var hrArray = [];
 const heartRate = document.getElementById('heartRate');
-
-//returns a Boolean and takes an array from ImageData.data
-// call this with the parameter measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data
-function isFingerOnCamera(fullImage) {
-  // DEBUG:
-  //heartRate.innerHTML = "isFingerOnCamera " + false;
-
-  let redPixels = 0;
-  const redThreshold = 120000; //approximately 1/3rd of the screen
-  for (let i = 0; i < fullImage.length; i++) {
-    const red = fullImage[i + 0];
-    const green = fullImage[i + 1];
-    const blue = fullImage[i + 2];
-
-    // if pixel is red enough. Probably need to tweak this value.
-    // based on list of reds and pinks here: https://htmlcolorcodes.com/colors/shades-of-red/
-    // Other ranges to try: (red >= 200 && blue <= 160 && green <= 160)
-    //   if ((red-blue) > 100 && (red-green) > 100){
-    if(red > 100 && green < 100 && blue < 100){
-      redPixels++;
-      if (redPixels >= redThreshold) {
-        // DEBUG:
-        // heartRate.innerHTML = "isFingerOnCamera " + true;
-        return true;
-      }
-    }
-  }
-  return false;
-}
-
 
 function processCameraFrame() {
   const pixel = measurementContext.getImageData(
@@ -191,7 +163,7 @@ function toggleHelpPopup(){
 }
 
 
-var fingerPlaced = null;
+
 
 
 //Coordinates of Oval
@@ -212,21 +184,55 @@ var fRightCoord = window.scrollX + fingerEl.getBoundingClientRect().right// righ
 console.log("Finger = top: " + fTopCoord + " bottCoord: " + fBottCoord + " leftCoord: " + fLeftCoord + " rightCoord: " + fRightCoord);
 
 //testing if fingerprint is within the Oval:
+var fingerPlaced = null;
+
+//returns a Boolean and takes an array from ImageData.data
+// call this with the parameter measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data
+function isFingerOnCamera(fullImage) {
+  // DEBUG:
+  //heartRate.innerHTML = "isFingerOnCamera " + false;
+
+  let redPixels = 0;
+  const redThreshold = 120000; //approximately 1/3rd of the screen
+  for (let i = 0; i < fullImage.length; i++) {
+    const red = fullImage[i + 0];
+    const green = fullImage[i + 1];
+    const blue = fullImage[i + 2];
+
+    // if pixel is red enough. Probably need to tweak this value.
+    // based on list of reds and pinks here: https://htmlcolorcodes.com/colors/shades-of-red/
+    // Other ranges to try: (red >= 200 && blue <= 160 && green <= 160)
+    //   if ((red-blue) > 100 && (red-green) > 100){
+    if(red > 100 && green < 100 && blue < 100){
+      redPixels++;
+      if (redPixels >= redThreshold) {
+        // DEBUG:
+        // heartRate.innerHTML = "isFingerOnCamera " + true;
+        
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 
 var timer = 0;
-fingerPlaced = false;
+//fingerPlaced = false;
+fingerInOval = false;
 let counter = 0;
 setInterval(() => {
+  fingerPlaced = isFingerOnCamera(measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data);
   document.getElementById('rectangle').style.display = "none";
 
  //later make the #s in the bool statements the varaibles instead
   if(oTopCoord < fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord){ 
-
-    fingerPlaced = true;
+    
+    fingerInOval = true;
     fingerIn();
     timer = 0;
   } else if(timer > 60) {
-    fingerPlaced = false;
+    fingerInOval = false;
     fingerOut();
     timer++;
   }else{
