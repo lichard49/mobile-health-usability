@@ -89,20 +89,17 @@ const heartRate = document.getElementById('heartRate');
 // call this with the parameter measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data
 function isFingerOnCamera(fullImage) {
   // DEBUG:
-  //heartRate.innerHTML = "isFingerOnCamera " + false;
+  // heartRate.innerHTML = "isFingerOnCamera " + false;
 
   let redPixels = 0;
-  const redThreshold = 120000; //approximately 1/3rd of the screen
-  for (let i = 0; i < fullImage.length; i++) {
+  const redThreshold = 120000; //approximately 1/3rd of the pixel 4 screen
+  for (let i = 0; i < fullImage.length; i+=4) {
     const red = fullImage[i + 0];
     const green = fullImage[i + 1];
     const blue = fullImage[i + 2];
 
-    // if pixel is red enough. Probably need to tweak this value.
-    // based on list of reds and pinks here: https://htmlcolorcodes.com/colors/shades-of-red/
-    // Other ranges to try: (red >= 200 && blue <= 160 && green <= 160)
-    //   if ((red-blue) > 100 && (red-green) > 100){
-    if(red > 100 && green < 100 && blue < 100){
+    // if pixel is red enough. May need to tweak this value.
+    if ((red-blue) > 50 && (red-green) > 50){
       redPixels++;
       if (redPixels >= redThreshold) {
         // DEBUG:
@@ -220,7 +217,7 @@ setInterval(() => {
   document.getElementById('rectangle').style.display = "none";
 
  //later make the #s in the bool statements the varaibles instead
-  if(oTopCoord < fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord){ 
+  if(oTopCoord < fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord){
 
     fingerPlaced = true;
     fingerIn();
@@ -282,9 +279,9 @@ function fingerIn(){
 
     hrAverage = hrAvg();
     hrAverage = Math.round(hrAverage);
-    //go to results page 
+    //go to results page
     localStorage.setItem("bpmFinal", hrAverage);
-    window.location.replace("hrResults.html");    
+    window.location.replace("hrResults.html");
   }
 }
 
@@ -296,4 +293,3 @@ function hrAvg(){
   bpmAvg = bpmAvg / arLength;
   return bpmAvg;
 }
-
