@@ -81,9 +81,8 @@ function argMax(array) {
   return array.map((x, i) => [x, i]).reduce((r, a) => (a[0] > r[0] ? a : r))[1];
 }
 
-//Hana: creating an arraylist to avg the hr values to display the "final" value at the results page
-var hrArray = [];
 
+var hrArray = [];
 const heartRate = document.getElementById('heartRate');
 
 function processCameraFrame() {
@@ -203,6 +202,7 @@ setInterval(() => {
   }
 }, 600); //miliseconds, waits 1 minute before displaying "help" menu if user's finger is not properly placed
 
+//if time: go in and fix how messages are hiding, use the hide/show method/function
 function fingerOut(){
   document.getElementById('oval').src = "dashed_oval.png";
   //move bar out
@@ -222,9 +222,11 @@ function fingerOut(){
   
 }
 
-var bpmAvg = 0;
-var hrAverage = 0;
+var bpmAvg;
+var hrAverage;
 function fingerIn(){
+  bpmAvg = 0;
+  hrAverage = 0;
   document.getElementById('rectangle').style.display = "none";
 
   document.getElementById('oval').src = "green_oval.png";
@@ -244,22 +246,14 @@ function fingerIn(){
   if(testComplete){
     document.getElementById("secondMessage").style.marginLeft = "-500px";
     document.getElementById("thirdMessage").style.marginLeft = "5px";
-    const arLength = hrArray.length;
-    /*
-    for(let i = 0; i < arLength; i++){
-      bpmAvg += hrArray[i];
-      console.log("traversing array = " + bpmAvg);
-    }*/
+
     hrAverage = hrAvg();
-    console.log("array avg = " + hrAverage)
-  
-    //go to results page
-    window.location.replace("hrResults.html");
-    document.getElementById("changeHR").innerHTML = hrAverage;
-    
+    hrAverage = Math.round(hrAverage);
+    //go to results page 
+    localStorage.setItem("bpmFinal", hrAverage);
+    window.location.replace("hrResults.html");    
   }
 }
-
 
 function hrAvg(){
   const arLength = hrArray.length;

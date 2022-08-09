@@ -5,21 +5,26 @@
         <link rel="stylesheet" type="text/css" href="hrbasicUIPagesStyle.css" media="screen"/>
         <script defer type="text/javascript" src="app.js"></script>
         <script defer type="text/javascript" src="measurement.js"></script>
+        
         <style>
             @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;1,300&display=swap');
         </style>
     </header>
     <body>
+       
         <a href="homePage.html"><div id="x"><img src="gray_x_image.png" width="40px" height="40px" ></div></a>
         <div id="xText"><b>Your Results</b></div>
         <div id = "boxResults">
             <div id="resultsTopText"><b>Heart Rate</b></div>
            <div id="resultsMiddleText"><h1 id="changeHR">TBD</h1></div>
-            <script>  document.getElementById("changeHR").innerHTML = "TBD";</script>
+            
             <div id="resultsBottomText">beats per minute</div>
         </div> 
         <div id="resultsInfoText"><b>For informational purposes only. <br>Consult your local medical authority for <br> advice.</b></div>
-       
+        <script>
+            const bpmFinal = localStorage.getItem("bpmFinal");
+            document.getElementById("changeHR").innerHTML = bpmFinal;
+        </script>
     </body>
 
 </html>
