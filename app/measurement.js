@@ -187,10 +187,6 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
 //Hana's additions:
 //Help toggle Menu
 function toggleHelpPopup(){
-<<<<<<< HEAD
-
-=======
->>>>>>> 493309494f705a30b2592f5e2b93915c68c61a97
   document.getElementById("popup-1").classList.toggle("active");
 }
 
@@ -222,12 +218,10 @@ fingerPlaced = false;
 let counter = 0;
 setInterval(() => {
   document.getElementById('rectangle').style.display = "none";
-<<<<<<< HEAD
-  if(315 < fTopCoord && fBottCoord < 485 && 138 < fLeftCoord && fRightCoord < 238){
-=======
+
  //later make the #s in the bool statements the varaibles instead
   if(oTopCoord < fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord){ 
->>>>>>> 493309494f705a30b2592f5e2b93915c68c61a97
+
     fingerPlaced = true;
     fingerIn();
     timer = 0;
@@ -293,8 +287,6 @@ function fingerIn(){
     window.location.replace("hrResults.html");    
   }
 }
-<<<<<<< HEAD
-=======
 
 function hrAvg(){
   const arLength = hrArray.length;
@@ -304,4 +296,4 @@ function hrAvg(){
   bpmAvg = bpmAvg / arLength;
   return bpmAvg;
 }
->>>>>>> 493309494f705a30b2592f5e2b93915c68c61a97
+
