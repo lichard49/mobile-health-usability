@@ -1,3 +1,5 @@
+//Line 111 --> Turns off going to the Results page when done
+
 const videoElement = document.getElementsByClassName('input_video')[0];
 const canvasElement = document.getElementsByClassName('output_canvas')[0];
 const canvasCtx = canvasElement.getContext('2d');
@@ -88,4 +90,71 @@ camera.start();
 //Hana's additions
 function toggleHelpPopup(){
   document.getElementById("popup-1").classList.toggle("active");
+}
+
+var personInFrame = true; 
+var personInBoxes = true;
+var timer = 0;
+var finalRR = -1;
+
+//Changes messages based on User's actions
+setInterval(() => {
+if(personInFrame && personInBoxes){
+  timer = 0;
+  inRightLocation();
+  if(testComplete){
+    document.getElementById('detectingMsg').style.display = "none";
+    document.getElementById('doneMsg').style.display = "block";
+    localStorage.setItem("rrFinal", finalRR);
+    // go to results page
+    window.location.replace("rrResults.html");
+  }
+}else if(personInFrame && !personInBoxes && timer > 60){
+  displayHelpMsgs();
+}else {
+  timer++;
+  notInSpotAndWaiting();
+}
+}, 600); //milliseconds; 60 seconds; waits before displaying help message
+
+
+//hides messages based on if the user is in the frame, box, etc
+function inRightLocation(){
+  document.getElementById('number').style.display = "block";
+  document.getElementById('rectangle').style.display = "none";
+  document.getElementById('positionMsg').style.display = "none";
+  document.getElementById('doneMsg').style.display = "none";
+  document.getElementById('helpMsg').style.display = "none";
+  document.getElementById('yllwQMark').style.display = "none";
+  document.getElementById('detectingMsg').style.display = "block";
+  //starting progressbar
+  document.getElementById('innerId').style.display = "block";
+  document.getElementById('outerId').style.display = "block";
+  document.getElementById('circleFiller').style.animation = "anim 30s linear forwards";
+}
+
+function displayHelpMsgs(){
+  document.getElementById('rectangle').style.display = "block";
+  document.getElementById('positionMsg').style.display = "none";
+  document.getElementById('doneMsg').style.display = "none";
+  document.getElementById('helpMsg').style.display = "block";
+  document.getElementById('yllwQMark').style.display = "block";
+  document.getElementById('detectingMsg').style.display = "none";
+  document.getElementById('innerId').style.display = "none";
+  document.getElementById('outerId').style.display = "none";
+  document.getElementById('circleFiller').style.animation = "null";
+  document.getElementById('number').style.display = "none";
+}
+
+function notInSpotAndWaiting(){
+  document.getElementById('rectangle').style.display = "none";
+  document.getElementById('positionMsg').style.display = "block";
+  document.getElementById('doneMsg').style.display = "none";
+  document.getElementById('helpMsg').style.display = "none";
+  document.getElementById('yllwQMark').style.display = "none";
+  document.getElementById('detectingMsg').style.display = "none";
+  document.getElementById('innerId').style.display = "block";
+  document.getElementById('outerId').style.display = "block";
+  document.getElementById('circleFiller').style.animation = "none";
+  document.getElementById('number').style.display = "block";
 }

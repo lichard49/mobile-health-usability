@@ -15,10 +15,15 @@
 </head>
 <body>
   <a href="rrPage4.html"><img src="arrowBlue.png" width="35px" height="35px"></a>
+  <div id="rectangle"></div>
 
-
-  
+<div id="topBox">
+  <div id="positionMsg">Position yourself within the frame. Make sure you're comfortable.</div>
+  <div id="detectingMsg"><b>Detecting face and chest.</b> Look at the camera and remain still...</div>
+  <div id="doneMsg"><b>Measurement complete!</b></div>
+  <div id="helpMsg"><b>We're having trouble detecting you.</b> Make sure your body is aligned with the boxes on screen.</div>
   <img src="yellowHelpQuestionMark.png"  id="yllwQMark">
+
     <div class="skill">
       <div class="outer" id="outerId"></div>
           <div class="inner" id="innerId"></div>
@@ -34,8 +39,16 @@
             </div>
       
   </div>
+</div>
 
-
+<script>
+  document.getElementById('positionMsg').style.display = "block";
+  document.getElementById('detectingMsg').style.display = "none";
+  document.getElementById('doneMsg').style.display = "none";
+  document.getElementById('helpMsg').style.display = "none";
+  document.getElementById('yllwQMark').style.display = "none";
+  document.getElementById('rectangle').style.display = "none";
+</script>
 
 
 </div>
@@ -55,24 +68,27 @@
         <div id="helpTextTopMidAlign">&ensp;&ensp;Position your head within the top frame and your chest in the bottom </div>
     </div>
   </div>
-  <button id="buttonHelp" onclick="toggleHelpPopup()"><b>Help</b></button>
+  
 </div>
-
+<button id="buttonHelp" onclick="toggleHelpPopup()"><b>Help</b></button>
 
   <script>         
     var testComplete = false;   
+    var counter = 0;
     let number = document.getElementById("number");
+    //document.getElementById('circleFiller').style.animation = "anim 30s linear forwards";
     setInterval(() => {     
         if(counter == 100){
-            testComplete = true; 
-            document.getElementById('circleFiller').style.stroke= '#2EAF26';            
-        } else{
+          testComplete = true; 
+          document.getElementById('circleFiller').style.stroke= '#2EAF26';            
+        }else if(personInBoxes && personInFrame){
           //later change it to if fingerPlaced && if fingerInOval <-- proper location for measurments 
-
-            counter += 1;
-            number.innerHTML = counter + "%";
-            
-        } 
+          counter += 1;
+          number.innerHTML = counter + "%";
+        }else{
+          counter = 0;
+          number.innerHTML = counter + "%";
+        }
     }, 300); //miliseconds 
     
 </script>
