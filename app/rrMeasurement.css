@@ -2,3 +2,260 @@
     margin-left: -10px;
     margin-top: 207px;
 }
+
+
+/*Help Menu CSS*/
+
+#yllwQMark{
+    margin-top: 45px;
+    margin-left: -500px;
+    position:absolute;
+    width: 40px;
+    height:45px;
+}
+
+#topScreen{
+    margin-top: -125px;
+}
+
+.popup .overlay{
+    position: absolute;
+    /*
+    top : 240px;
+    left: 0px;
+    width: 355px;
+    height: 499px;*/
+    width: 400px;
+    height: 550px;
+    margin-left: -10px;
+    margin-top: 207px;
+    background: rgba(109, 109, 109, 0.7);
+    z-index: 1;
+    display: none; 
+}
+
+.popup .content{
+    position: absolute;
+    left: 200px;
+    top: 475px;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgb(255, 255, 255);
+    width: 290px;
+    height: 380px;
+    border: 2px solid #3771E0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    z-index:2;
+    text-align: center;
+    padding:20px;
+    box-sizing: border-box;
+}
+  
+  .popup .close-btn{
+    cursor:pointer;
+    position:absolute;
+    right:20px;
+    top:10px;
+    width: 30px;
+    height: 30px;
+    background:rgb(255, 255, 255);
+    color:#fff;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+  }
+  
+  .popup.active .overlay{
+    display: block;
+  }
+  
+  .popup.active .content{
+    transition: all 300ms ease-in-out;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  #buttonHelp{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    margin-top: -17px;
+    margin-left: 330px;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background: #ffffff;
+    border-radius: 4px;
+    border-style: solid;
+    border-color:#ffffff;
+    color:#3771E0;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 18px;
+  }
+  
+  #xHelp{
+    margin-top: 0px;
+    margin-left: 10px;
+  }
+  
+  #questionMark{
+    margin-left: -235px;
+    margin-top: -10px;
+  }
+  
+  #helpTitle{
+    position: absolute;
+    width: 87px;
+    height: 37px;
+    font-size: 22px;
+    font-family: 'IBM Plex Sans';
+    margin-left: 15px;
+    margin-top: -32px;
+    
+  }
+  
+  #helpTextTopLight{
+    position: absolute;
+    width: 200px;
+    height: 366px;
+    left: -35px;
+    top: 65px;
+    font-size: 19px;
+    font-family: 'IBM Plex Sans';
+  
+  }
+  #helpTextTopMidLight{
+    position: absolute;
+    width: 150px;
+    font-size: 18px;
+    font-family: 'IBM Plex Sans';
+    line-height: 22px;
+    height: 366px;
+    left: 25px;
+    top: 90px;
+  
+  }
+  
+  #helpTextTopStable{
+    position: absolute;
+    width: 200px;
+    height: 366px;
+    left: -10px;
+    top: 165px;
+    font-size: 19px;
+    font-family: 'IBM Plex Sans';
+  
+  }
+  #helpTextTopMidStable{
+    position: absolute;
+    width: 260px;
+    height: 150px;
+    left: -20px;
+    top: 190px;
+    font-size: 18px;
+    font-family: 'IBM Plex Sans';
+    line-height: 22px;
+  }
+
+  #helpTextTopAlign{
+    position: absolute;
+    width: 200px;
+    height: 366px;
+    left: -25px;
+    top: 260px;
+    font-size: 19px;
+    font-family: 'IBM Plex Sans';
+  }
+
+  #helpTextTopMidAlign{
+    position: absolute;
+    width: 220px;
+    height: 366px;
+    left: 10px;
+    top: 285px;
+    font-size: 18px;
+    font-family: 'IBM Plex Sans';
+    line-height: 22px;
+  }
+  
+  
+  /*Progress Bar Style*/
+  
+.skill{
+width: 100px;
+height: 100px;
+position: relative;
+}
+
+
+#outerId{
+margin-top: 6px;
+margin-left: 26px;
+position: absolute; 
+height: 69px;
+width: 69px;
+border-radius: 50%;
+box-shadow:  6px 6px 10px -1px rgba(0,0,0,0.15),
+-6px -6px 10px -1px rgba(255,255,255,0.7);
+
+}
+
+#innerId{
+margin-top:  25px;
+margin-left: 20px;
+height: 80px;
+width: 80px;
+border-radius: 50%;
+
+
+box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+-0.5px -0.5px 0px  rgba(255,255,255,1),
+0.5px 0.5px 0px  rgba(0,0,0,0.15),
+0px 12px 10px -10px rgba(0,0,0,0.05);
+/*border: 1px solid red;*/
+}
+
+#number{
+margin-top: -49px; /*CHANGEs*/
+margin-left: 40px;
+font-weight: 600;
+color: rgb(0, 0, 0);
+}
+
+#circleFiller{
+fill: none; /*Can add colors*/
+/*stroke: cornflowerblue; Outline*/
+stroke: #074EE8; /*#074EE8;*/
+stroke-width: 5px;
+stroke-dasharray: 295; /*percent shaded, 472 = complete circle*/
+stroke-dashoffset: 300; /*hides certain percent*/
+
+}
+
+
+#svgId{
+position: absolute;
+top: -35.5px;
+left: -13.5px;
+transform: rotate(-90deg);
+}
+
+/*algorithm for proper % covered: 472 (or stroke-dasharray till
+covered completly) - 472(0.%)*/
+@keyframes anim{
+    100%{
+        stroke-dashoffset: 65;
+    }
+}
+ /*
+  stop{
+    stop-color: #074EE8; /*#2EAF26 <-- green color to switch
+  } */  
+

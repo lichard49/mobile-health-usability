@@ -17,7 +17,67 @@
   <a href="rrPage4.html"><img src="arrowBlue.png" width="35px" height="35px"></a>
 
 
+  
+  <img src="yellowHelpQuestionMark.png"  id="yllwQMark">
+    <div class="skill">
+      <div class="outer" id="outerId"></div>
+          <div class="inner" id="innerId"></div>
+            <svg id = "svgId" width="150px" height="150px">
+              <defs>
+                  <stop  offset="0%" stop-color= #074EE8/>
+                  <stop offset="100%" stop-color= #074EE8/> <!--stop-color= #074EE8-->
+              </defs>
+              <circle  id="circleFiller" cx="74" cy="74" r="37" stroke-linecap="round" />
+            </svg>
+              <div id="number"></div>
+          
+            </div>
+      
+  </div>
+
+
+
+
+</div>
+<div id="topScreen">
+  <!-- POP UP Help Menu Code -->
+  <div class="popup" id="popup-1">
+    <div class="overlay"></div>
+    <div class="content" class=".helpText">
+        <div class="close-btn" onclick="toggleHelpPopup()"><div id="xHelp"><img src="gray_x_image.png" width="20px" height="20px" ></div></div>
+        <img id="questionMark" src="questionMarkImage.png" width="30px" height="30px">
+        <div id="helpTitle" > Help</div>
+        <div id ="helpTextTopLight"><b>Lighting</b></div> 
+        <div id="helpTextTopMidLight">Try finding an area with even lighting </div>
+        <div id ="helpTextTopStable"><b>Stable Surface</b></div> 
+        <div id="helpTextTopMidStable">&ensp;&ensp;&ensp;&ensp;&ensp;Please place your camera<br> on a stable surface </div>
+        <div id ="helpTextTopAlign"><b>Alignment</b></div> 
+        <div id="helpTextTopMidAlign">&ensp;&ensp;Position your head within the top frame and your chest in the bottom </div>
+    </div>
+  </div>
+  <button id="buttonHelp" onclick="toggleHelpPopup()"><b>Help</b></button>
+</div>
+
+
+  <script>         
+    var testComplete = false;   
+    let number = document.getElementById("number");
+    setInterval(() => {     
+        if(counter == 100){
+            testComplete = true; 
+            document.getElementById('circleFiller').style.stroke= '#2EAF26';            
+        } else{
+          //later change it to if fingerPlaced && if fingerInOval <-- proper location for measurments 
+
+            counter += 1;
+            number.innerHTML = counter + "%";
+            
+        } 
+    }, 300); //miliseconds 
+    
+</script>
+
   <video class="input_video" hidden></video>
-  <div id="videoFeed"><canvas class="output_canvas" width="400" height="480"></canvas></div>
+  <div id="videoFeed"><canvas class="output_canvas" width="400" height="550"></canvas></div>
 </body>
 </html>

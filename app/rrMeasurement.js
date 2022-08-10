@@ -83,3 +83,9 @@ const camera = new Camera(videoElement, {
   height: 720
 });
 camera.start();
+
+
+//Hana's additions
+function toggleHelpPopup(){
+  document.getElementById("popup-1").classList.toggle("active");
+}

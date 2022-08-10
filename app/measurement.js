@@ -86,8 +86,8 @@ function argMax(array) {
 
 var hrArray = [];
 const heartRate = document.getElementById('heartRate');
-
-
+var fingerInOval = false;
+var fingerPlaced = null;
 //returns a Boolean and takes an array from ImageData.data
 // call this with the parameter measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data
 function isFingerOnCamera(fullImage) {
@@ -107,6 +107,7 @@ function isFingerOnCamera(fullImage) {
       if (redPixels >= redThreshold) {
         // DEBUG:
         // heartRate.innerHTML = "isFingerOnCamera " + true;
+        fingerPlaced = true;
         return true;
       }
     }
@@ -145,7 +146,10 @@ function processCameraFrame() {
   }
 
   const heartRateBpm = peaks * 60 / (windowSize / sampleRate) / 2;
-  hrArray.push(heartRateBpm);
+  if(fingerInOval && fingerPlaced){
+    hrArray.push(heartRateBpm);
+  }
+  
 
   heartRate.innerText = Math.round(heartRateBpm);
 }
@@ -215,7 +219,7 @@ var fRightCoord = window.scrollX + fingerEl.getBoundingClientRect().right// righ
 console.log("Finger = top: " + fTopCoord + " bottCoord: " + fBottCoord + " leftCoord: " + fLeftCoord + " rightCoord: " + fRightCoord);
 
 //testing if fingerprint is within the Oval:
-var fingerPlaced = null;
+
 
 
 
@@ -256,22 +260,7 @@ setInterval(() => {
   }
 
   }
-  /*if(oTopCoord < fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord){
-    fingerInOval = true;
-    //fingerPlaced = true;
-    if(fingerInOval && fingerPlaced){
-      fingerIn();
-    }
-    timer = 0;
-  } else if(timer > 60) {
-    fingerInOval = false;
-    fingerOut();
-    timer++;
-  }else{
-    fingerInOval = false;
-    document.getElementById('oval').src = "dashed_oval.png";
-    timer++;
-  }*/ 
+
 , 600); //miliseconds, waits 1 minute before displaying "help" menu if user's finger is not properly placed
 
 //if time: go in and fix how messages are hiding, use the hide/show method/function
