@@ -86,16 +86,101 @@ function argMax(array) {
 
 var hrArray = [];
 const heartRate = document.getElementById('heartRate');
+
+let averageReddestLocation = [0,0]; // x, y Coordinates
+const redWindowLength = 30; // # frames
+let redWindow = [];
+
+
+//// DEBUG: location is [x, y]
+function debugTrackingVisual(location, fullImage) {
+    measurementContext.fillStyle = "#00FF00";
+    measurementContext.fillRect(location[0], location[1], 15, 15);
+}
+
+
+
+// returns an array of length 2 with x, y coordinates respectively
+// takes an array from ImageData.data, call this with the parameter:
+// measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data
+function getFingerLocation(fullImage) {
+  const reddestRed = [255, 0, 0]  //[200, 45, 30]; //red, blue, green of target red
+  let reddestPixel = [0, 0]; // x,y coordinates of closest pixel to reddestRed in color
+  let minRedDistance = 1000; // distance from reddestRed to the closest pixel in color
+
+  // look through all pixels for the most central, reddest one
+  for (let i = 0; i < fullImage.length; i+=4) {
+    const thisRed = fullImage[i + 0];
+    const thisGreen = fullImage[i + 1];
+    const thisBlue = fullImage [i + 2];
+
+    // distance in color from this pixel to reddestRed
+    const thisRedDistance = Math.sqrt(Math.pow((reddestRed[0] - thisRed),2) +
+      Math.pow((reddestRed[1] - thisGreen),2) + Math.pow((reddestRed[2] - thisBlue),2));
+
+    // if this pixel is closer in color, it becomes reddest pixel
+    if(thisRedDistance < minRedDistance){
+      reddestPixel[0] = (i/4) % measurementCanvas.width; //calculate x of this pixel
+      reddestPixel[1] = Math.floor((i / 4) / measurementCanvas.width); //calculate y of this pixel
+      minRedDistance = thisRedDistance;
+    }
+  }
+
+  // Sliding window average of last redWindowLength frames x and y location
+  redWindow.push(reddestPixel);
+  while (redWindow.length > redWindowLength){
+    redWindow.shift();
+  }
+
+  let totalX = 0;
+  for(let j = 0; j < redWindow.length; j++){
+    totalX += redWindow[j][0];
+  }
+  let avgX = totalX/redWindow.length;
+
+  let totalY = 0;
+  for(let k = 0; k < redWindow.length; k++){
+    totalY += redWindow[k][1];
+  }
+  let avgY = totalY/redWindow.length;
+
+  averagedLocation = [avgX, avgY];
+
+  const canvasCenter = [measurementCanvas.width/2, measurementCanvas.height/2];
+
+  // Distance to center along x and y axes
+  // thisXDist = canvasCenter[0] - averagedLocation[0];
+  // thisYDist = canvasCenter[1] - averagedLocation[1];
+  // console.log("canvasCenter " + canvasCenter + "averagedLocation " + averagedLocation + "thisXDist, thisYDist " + thisXDist +"," +thisYDist)
+  //
+  //
+  // // find the x,y opposite of averagedLocation
+  // let flippedLocation = [];
+  // flippedLocation[0] = canvasCenter[0] + thisXDist;
+  // flippedLocation[1] = canvasCenter[1] + thisYDist;
+  //
+  // console.log("flippedLocation " + flippedLocation);
+
+  //// DEBUG:
+  debugTrackingVisual(averagedLocation, fullImage);
+
+  return averagedLocation;
+}
+
 var fingerInOval = false;
 var fingerPlaced = null;
-//returns a Boolean and takes an array from ImageData.data
+
+// returns a Boolean and takes an array from ImageData.data
 // call this with the parameter measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data
 function isFingerOnCamera(fullImage) {
   // DEBUG:
   // heartRate.innerHTML = "isFingerOnCamera " + false;
 
   let redPixels = 0;
-  const redThreshold = 120000; //approximately 1/3rd of the pixel 4 screen
+  const redThreshold = 325000; //approximately 90% of the pixel 4 screen
+
+  // look through all pixels until determine that the number of reddish pixels
+  // is at least redThreshold
   for (let i = 0; i < fullImage.length; i+=4) {
     const red = fullImage[i + 0];
     const green = fullImage[i + 1];
@@ -120,6 +205,10 @@ function isFingerOnCamera(fullImage) {
 
 
 function processCameraFrame() {
+  getFingerLocation(measurementContext.getImageData(
+    0, 0, measurementCanvas.width,
+    measurementCanvas.height).data);
+
   const pixel = measurementContext.getImageData(
     measurementCanvas.width/2,
     measurementCanvas.height/2, 1, 1).data;
@@ -149,7 +238,7 @@ function processCameraFrame() {
   if(fingerInOval && fingerPlaced){
     hrArray.push(heartRateBpm);
   }
-  
+
 
   heartRate.innerText = Math.round(heartRateBpm);
 }
@@ -238,7 +327,7 @@ setInterval(() => {
     if(fingerInOval && fingerPlaced){
       //this means finger is in frame & in right location
       timer = 0;
-      fingerIn(); 
+      fingerIn();
     }
   }else if(fingerPlaced && !fingerInOval && timer > 60){
     //finger is in frame but not in the right location and when the user hasn't gone to the right direction for a while
