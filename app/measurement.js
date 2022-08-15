@@ -87,7 +87,7 @@ function argMax(array) {
 var hrArray = [];
 const heartRate = document.getElementById('heartRate');
 
-let averageReddestLocation = [0,0]; // x, y Coordinates
+let averagedReddestLocation = []; // x, y Coordinates
 const redWindowLength = 30; // # frames
 let redWindow = [];
 
@@ -98,17 +98,24 @@ function debugTrackingVisual(location, fullImage) {
     measurementContext.fillRect(location[0], location[1], 15, 15);
 }
 
-
+function getAverageCoordinate(coordinates, coordinateIndex) {
+  let total = 0;
+  for(let i = 0; i < coordinates.length; i++){
+    total += coordinates[i][coordinateIndex];
+  }
+  let avg = total/coordinates.length;
+  return avg;
+}
 
 // returns an array of length 2 with x, y coordinates respectively
 // takes an array from ImageData.data, call this with the parameter:
 // measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data
 function getFingerLocation(fullImage) {
-  const reddestRed = [255, 0, 0]  //[200, 45, 30]; //red, blue, green of target red
+  const reddestRed = [255, 0, 0] //red, blue, green of target red
   let reddestPixel = [0, 0]; // x,y coordinates of closest pixel to reddestRed in color
   let minRedDistance = 1000; // distance from reddestRed to the closest pixel in color
 
-  // look through all pixels for the most central, reddest one
+  // look through all pixels for the reddest one
   for (let i = 0; i < fullImage.length; i+=4) {
     const thisRed = fullImage[i + 0];
     const thisGreen = fullImage[i + 1];
@@ -131,40 +138,13 @@ function getFingerLocation(fullImage) {
   while (redWindow.length > redWindowLength){
     redWindow.shift();
   }
+  averagedReddestLocation[0] = getAverageCoordinate(redWindow, 0);
+  averagedReddestLocation[1] = getAverageCoordinate(redWindow, 1);
 
-  let totalX = 0;
-  for(let j = 0; j < redWindow.length; j++){
-    totalX += redWindow[j][0];
-  }
-  let avgX = totalX/redWindow.length;
+  //// For debugging
+  debugTrackingVisual(averagedReddestLocation, fullImage);
 
-  let totalY = 0;
-  for(let k = 0; k < redWindow.length; k++){
-    totalY += redWindow[k][1];
-  }
-  let avgY = totalY/redWindow.length;
-
-  averagedLocation = [avgX, avgY];
-
-  const canvasCenter = [measurementCanvas.width/2, measurementCanvas.height/2];
-
-  // Distance to center along x and y axes
-  // thisXDist = canvasCenter[0] - averagedLocation[0];
-  // thisYDist = canvasCenter[1] - averagedLocation[1];
-  // console.log("canvasCenter " + canvasCenter + "averagedLocation " + averagedLocation + "thisXDist, thisYDist " + thisXDist +"," +thisYDist)
-  //
-  //
-  // // find the x,y opposite of averagedLocation
-  // let flippedLocation = [];
-  // flippedLocation[0] = canvasCenter[0] + thisXDist;
-  // flippedLocation[1] = canvasCenter[1] + thisYDist;
-  //
-  // console.log("flippedLocation " + flippedLocation);
-
-  //// DEBUG:
-  debugTrackingVisual(averagedLocation, fullImage);
-
-  return averagedLocation;
+  return averagedReddestLocation;
 }
 
 var fingerInOval = false;
