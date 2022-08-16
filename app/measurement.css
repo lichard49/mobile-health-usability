@@ -384,14 +384,14 @@ stop{
 
 #oval{
   position: absolute;
-  left:130px;
-  top:100px;
+  left:160px;
+  top:170px;
 }
 
 #finger{
   position: absolute;
-  left:150px;
-  top:140px;
+  left:170px;
+  top:190px;
 
   /*Centered: 
    left:150px;

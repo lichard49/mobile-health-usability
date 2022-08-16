@@ -49,7 +49,7 @@
               document.getElementById('circleFiller').style.stroke= '#2EAF26';            
           } else{
             //later change it to if fingerPlaced && if fingerInOval <-- proper location for measurments 
-              if(fingerPlaced){
+              if(timeDelay >= 18 && fingerInOval){
               counter += 1;
               number.innerHTML = counter + "%";
               } else if(!fingerPlaced && timer < 60){
@@ -100,12 +100,16 @@
   <b>We're having trouble detecting your finger.</b> Move the 
   fingerprint to the circle. <br> Hold still once your finger is aligned.
 </div>
- 
+
+
 
   <div id="hrBPMDisplay" class="panel">
-    <img id="oval" src="dashed_oval.png" width="100px" height="170px">
-    <img id="finger" src="transparent_fingerprint.png" width="70px" height="100px">
-    (Keeping Temporarily:) Heart rate:  <span id="heartRate"></span> BPM
+   
+    Heart rate:  <span id="heartRate"></span> BPM
+    <img id="oval" src="dashed_oval.png" width="150px" height="170px">
+
+  
+
   </div>
 
 
@@ -116,6 +120,7 @@
     </div>
     <video autoplay id="measurementVideo" hidden></video>
     <canvas id="measurementCanvas">
+      <img id="finger" src="transparent_fingerprint.png" width="70px" height="100px">
     </canvas>
     <button id="buttonFlashlight" onclick="toggleFlashlight()">flash
       <img id="circleFlash" src="flashOff.png" width="65px" height="65px">

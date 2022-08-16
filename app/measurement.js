@@ -91,14 +91,33 @@ let averagedReddestLocation = []; // x, y Coordinates
 const redWindowLength = 30; // # frames
 let redWindow = [];
 
+function copyImageToCanvas(x, y){
+  var image = document.getElementById("finger");
+  var canvas = document.querySelector("canvas");
 
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(
+    image, x, y, 60, 70
+  );
+}
+
+
+var xFinger = 0;
+var yFinger = 0;
 //// DEBUG: location is [x, y]
 function debugTrackingVisual(location) {
-   // measurementContext.fillStyle = "#00FF00";
-    //measurementContext.fillRect(location[0], location[1], 15, 15);
-    var x = location[0];
-    var y = location[1];
-    measurementContext.drawImage("transparent_fingerprint.png", x, y);
+   //measurementContext.fillStyle = "#00FF00";
+   // measurementContext.fillRect(location[0], location[1], 15, 15);
+   xFinger = location[0];
+   yFinger = location[1];
+   
+   
+
+   console.log("x-coord = " + location[0] + " y-coord = " + location[1]);
+   //document.getElementById("yCoord").innerHTML = yFinger.toString();
+   copyImageToCanvas(location[0], location[1]);
+   isFingerInOval(xFinger, yFinger)
+
 }
 
 function getAverageCoordinate(coordinates, coordinateIndex) {
@@ -185,7 +204,7 @@ function isFingerOnCamera(fullImage) {
   return false;
 }
 
-
+var timeDelay = 0; //needs about 18 seconds before measures accurately  
 
 function processCameraFrame() {
   getFingerLocation(measurementContext.getImageData(
@@ -218,7 +237,7 @@ function processCameraFrame() {
   }
 
   const heartRateBpm = peaks * 60 / (windowSize / sampleRate) / 2;
-  if(fingerInOval && fingerPlaced){
+  if(fingerInOval && (timeDelay >= 18)){
     hrArray.push(heartRateBpm);
   }
 
@@ -271,7 +290,7 @@ function toggleHelpPopup(){
 
 
 
-
+/*
 
 //Coordinates of Oval
 let ovalEl = document.getElementById("oval");
@@ -282,6 +301,7 @@ var oRightCoord = window.scrollX + ovalEl.getBoundingClientRect().right// right
 console.log("Oval = top: " + oTopCoord + " bottCoord: " + oBottCoord + " leftCoord: " + oLeftCoord + " rightCoord: " + oRightCoord);
 //Temporary Starting Coordiantes --> Oval = top: 315 bottCoord: 485 leftCoord: 138 rightCoord: 238
 
+
 //Starting Coordinates of Fingerprint
 let fingerEl = document.getElementById("finger");
 var fTopCoord = window.scrollY + fingerEl.getBoundingClientRect().top// top
@@ -291,42 +311,51 @@ var fRightCoord = window.scrollX + fingerEl.getBoundingClientRect().right// righ
 console.log("Finger = top: " + fTopCoord + " bottCoord: " + fBottCoord + " leftCoord: " + fLeftCoord + " rightCoord: " + fRightCoord);
 
 //testing if fingerprint is within the Oval:
+//oTopCoord > fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord
+if(yFinger > oTopCoord && yFinger < oBottCoord && xFinger > oLeftCoord && xFinger < oRightCoord){
+  fingerInOval = true;
+  
+}*/
 
 
-
+function isFingerInOval(x, y){
+  if(160 < x && x < 330 && 170 < y && y < 370){
+    fingerInOval = true;
+  }else{
+    fingerInOval = false;
+  }
+}
 
 
 var timer = 0;
-//fingerPlaced = false;
-fingerInOval = false;
+
+
 let counter = 0;
 setInterval(() => {
   fingerPlaced = isFingerOnCamera(measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data);
   //later add if fingerPlaced --> start fingerprint icon tracking
   document.getElementById('rectangle').style.display = "none";
-
-  if(oTopCoord < fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord){
-    fingerInOval = true;
-    if(fingerInOval && fingerPlaced){
+  timeDelay++;
+  if(fingerInOval && timeDelay >= 18){
+    //later add if finger is placed && if fingerInOval
       //this means finger is in frame & in right location
       timer = 0;
       fingerIn();
-    }
-  }else if(fingerPlaced && !fingerInOval && timer > 60){
+  }else if( !fingerInOval && timer > 60){
     //finger is in frame but not in the right location and when the user hasn't gone to the right direction for a while
     fingerOut();
     timer++;
-    hrArray = null;
-  }else if(fingerPlaced && !fingerInOval && timer <= 60){
+    //hrArray = [];
+  }else if( !fingerInOval && timer <= 60){
     //finger is not in the oval and the finger is not placed on the screen and it's been less than 60 seconds
-    hrArray = null;
+    //hrArray = [];
     document.getElementById('oval').src = "dashed_oval.png";
     document.getElementById('rectangle').style.display = "none";
     document.getElementById('circleFiller').style.animation = "null";
     document.getElementById("secondMessage").style.marginLeft = "-500px";
     document.getElementById("firstMessage").style.marginLeft = "5px";
     timer++;
-  }else if(!fingerPlaced){
+  }else{
     document.getElementById("secondMessage").style.marginLeft = "-500px";
     document.getElementById("firstMessage").style.marginLeft = "5px";
   }
@@ -366,6 +395,7 @@ function fingerIn(){
 
   //move help image out
   document.getElementById('yllwQMark').style.marginLeft = "-500px";
+  document.getElementById("fourthMessage").style.marginLeft = "-500px";
   //move progress bar in
   document.getElementById('innerId').style.marginLeft = "20px";
   document.getElementById('outerId').style.marginLeft = "26px";
