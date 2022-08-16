@@ -93,9 +93,12 @@ let redWindow = [];
 
 
 //// DEBUG: location is [x, y]
-function debugTrackingVisual(location, fullImage) {
-    measurementContext.fillStyle = "#00FF00";
-    measurementContext.fillRect(location[0], location[1], 15, 15);
+function debugTrackingVisual(location) {
+   // measurementContext.fillStyle = "#00FF00";
+    //measurementContext.fillRect(location[0], location[1], 15, 15);
+    var x = location[0];
+    var y = location[1];
+    measurementContext.drawImage("transparent_fingerprint.png", x, y);
 }
 
 
