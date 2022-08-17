@@ -110,8 +110,8 @@ function debugTrackingVisual(location) {
    // measurementContext.fillRect(location[0], location[1], 15, 15);
    xFinger = location[0];
    yFinger = location[1];
-   
-   
+
+
 
    //console.log("x-coord = " + location[0] + " y-coord = " + location[1]);
    //document.getElementById("yCoord").innerHTML = yFinger.toString();
@@ -181,7 +181,7 @@ function isFingerOnCamera(fullImage) {
   // heartRate.innerHTML = "isFingerOnCamera " + false;
 
   let redPixels = 0;
-  const redThreshold = 325000; //approximately 90% of the pixel 4 screen
+  const redThreshold = 150000; //approximately 50% of the pixel 4 screen
 
   // look through all pixels until determine that the number of reddish pixels
   // is at least redThreshold
@@ -207,7 +207,7 @@ function isFingerOnCamera(fullImage) {
   return false;
 }
 
-var timeDelay = 0; //needs about 18 seconds before measures accurately  
+var timeDelay = 0; //needs about 18 seconds before measures accurately
 
 function processCameraFrame() {
   getFingerLocation(measurementContext.getImageData(
@@ -317,7 +317,7 @@ console.log("Finger = top: " + fTopCoord + " bottCoord: " + fBottCoord + " leftC
 //oTopCoord > fTopCoord && fBottCoord < oBottCoord && oLeftCoord < fLeftCoord && fRightCoord < oRightCoord
 if(yFinger > oTopCoord && yFinger < oBottCoord && xFinger > oLeftCoord && xFinger < oRightCoord){
   fingerInOval = true;
-  
+
 }*/
 
 
