@@ -97,7 +97,7 @@ function copyImageToCanvas(x, y){
 
   var ctx = canvas.getContext("2d");
   ctx.drawImage(
-    image, x, y, 60, 70
+    image, x, y, 80, 110
   );
 }
 
@@ -113,10 +113,12 @@ function debugTrackingVisual(location) {
    
    
 
-   console.log("x-coord = " + location[0] + " y-coord = " + location[1]);
+   //console.log("x-coord = " + location[0] + " y-coord = " + location[1]);
    //document.getElementById("yCoord").innerHTML = yFinger.toString();
+   if(true){
    copyImageToCanvas(location[0], location[1]);
    isFingerInOval(xFinger, yFinger)
+   }
 
 }
 
@@ -164,7 +166,7 @@ function getFingerLocation(fullImage) {
   averagedReddestLocation[1] = getAverageCoordinate(redWindow, 1);
 
   //// For debugging
-  debugTrackingVisual(averagedReddestLocation, fullImage);
+  debugTrackingVisual(averagedReddestLocation);
 
   return averagedReddestLocation;
 }
@@ -195,12 +197,13 @@ function isFingerOnCamera(fullImage) {
         // DEBUG:
         // heartRate.innerHTML = "isFingerOnCamera " + true;
         fingerPlaced = true;
+        //CALL FINGER TRACKING HERE AND NO WHERE ELSE
         return true;
       }
     }
   }
   document.getElementById("secondMessage").style.marginLeft = "-500px";
-  document.getElementById("firstMessage").style.marginLeft = "5px";
+  //document.getElementById("firstMessage").style.marginLeft = "5px";
   return false;
 }
 
@@ -319,7 +322,8 @@ if(yFinger > oTopCoord && yFinger < oBottCoord && xFinger > oLeftCoord && xFinge
 
 
 function isFingerInOval(x, y){
-  if(160 < x && x < 330 && 170 < y && y < 370){
+  //160 < x && x < 330 && 170 < y && y < 370
+  if(100 < x && x < 390 && 110 < y && y < 420){
     fingerInOval = true;
   }else{
     fingerInOval = false;
