@@ -88,7 +88,7 @@ var hrArray = [];
 const heartRate = document.getElementById('heartRate');
 
 let averagedReddestLocation = []; // x, y Coordinates
-const redWindowLength = 30; // # frames
+const redWindowLength = 90; // # frames
 let redWindow = [];
 
 function copyImageToCanvas(x, y){
