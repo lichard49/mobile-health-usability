@@ -111,13 +111,17 @@ function debugTrackingVisual(location) {
    xFinger = location[0];
    yFinger = location[1];
 
-
+   // only show fingerprint and check if in oval when the finger is detected
+   // to be on the camera lens
+   let isFingerOn = isFingerOnCamera(measurementContext.getImageData(0, 0,
+     measurementCanvas.width, measurementCanvas.height).data)
+   console.log("isFingerOn " + isFingerOn)
 
    //console.log("x-coord = " + location[0] + " y-coord = " + location[1]);
    //document.getElementById("yCoord").innerHTML = yFinger.toString();
-   if(true){
-   copyImageToCanvas(location[0], location[1]);
-   isFingerInOval(xFinger, yFinger)
+   if(isFingerOn){
+     copyImageToCanvas(location[0], location[1]);
+     isFingerInOval(xFinger, yFinger)
    }
 
 }
