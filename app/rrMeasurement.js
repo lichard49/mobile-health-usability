@@ -92,10 +92,10 @@ function toggleHelpPopup(){
   document.getElementById("popup-1").classList.toggle("active");
 }
 
-var personInFrame = true; 
+var personInFrame = true;
 var personInBoxes = true;
 var timer = 0;
-var finalRR = 14; //this value will be displayed to the user on the results page
+var finalRR = 10; //this value will be displayed to the user on the results page
 
 //Changes messages based on User's actions
 setInterval(() => {
@@ -114,7 +114,7 @@ if(personInFrame && personInBoxes){
   displayHelpMsgs();
 }else {
   timer++;
-  notInSpotAndWaiting(); //displays proper messages 
+  notInSpotAndWaiting(); //displays proper messages
 }
 }, 600); //milliseconds; 60 seconds; waits before displaying help message
 
