@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobile Health Usability</title>
-  <link rel="stylesheet" type="text/css" href="measurement.css"> 
+  <link rel="stylesheet" type="text/css" href="measurement.css">
   <link rel="stylesheet" type="text/css" href="hrbasicUIPagesStyle.css">
  <!--Re-import Google Font! -->
- 
+
  <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;1,300&family=Patrick+Hand&display=swap');
 </style>
@@ -25,7 +25,7 @@
   <a href="hrPage4.html"><img src="arrowBlue.png" width="28px" height="28px"></a>
   <div id="progressBox">
   <!--Progress Bar Code (nested in progressBox id/div)-->
-  
+
   <img src="yellowHelpQuestionMark.png"  id="yllwQMark">
     <div class="skill">
       <div class="outer" id="outerId"></div>
@@ -38,22 +38,22 @@
               <circle  id="circleFiller" cx="74" cy="74" r="37" stroke-linecap="round" />
             </svg>
               <div id="number"></div>
-          
+
             </div>
-      
+
   </div>
 
 
 
-  <script>         
-      var testComplete = false;   
+  <script>
+      var testComplete = false;
       let number = document.getElementById("number");
-      setInterval(() => {     
+      setInterval(() => {
           if(counter == 100){
-              testComplete = true; 
-              document.getElementById('circleFiller').style.stroke= '#2EAF26';            
+              testComplete = true;
+              document.getElementById('circleFiller').style.stroke= '#2EAF26';
           } else{
-            //later change it to if fingerPlaced && if fingerInOval <-- proper location for measurments 
+            //later change it to if fingerPlaced && if fingerInOval <-- proper location for measurments
               if(timeDelay >= 18 && fingerInOval){
               counter += 1;
               number.innerHTML = counter + "%";
@@ -66,9 +66,9 @@
                 number.innerHTML = null;
                 document.getElementById('circleFiller').style.animation = "null";
               }
-          } 
-      }, 300); //miliseconds 
-      
+          }
+      }, 300); //miliseconds
+
   </script>
 </div>
   <!-- POP UP Help Menu Code -->
@@ -78,15 +78,15 @@
         <div class="close-btn" onclick="toggleHelpPopup()"><div id="xHelp"><img src="gray_x_image.png" width="20px" height="20px" ></div></div>
         <img id="questionMark" src="questionMarkImage.png" width="30px" height="30px">
         <div id="helpTitle" > Help</div>
-        <div id ="helpTextTopLight"><b>Lighting</b></div> 
+        <div id ="helpTextTopLight"><b>Lighting</b></div>
         <div id="helpTextTopMidLight">Turn on the flashlight<br>&ensp;&nbsp;button for even lighting<br> </div>
-        <div id ="helpTextTopHold"><b>Hold Still</b></div> 
-        <div id="helpTextTopMidHold">&emsp;&ensp;&ensp;When your finger is aligned 
+        <div id ="helpTextTopHold"><b>Hold Still</b></div>
+        <div id="helpTextTopMidHold">&emsp;&ensp;&ensp;When your finger is aligned
         <br> &emsp;&ensp;within the circle, hold still <br>&ensp; as the phone measures </div>
     </div>
   </div>
   <button id="buttonHelp" onclick="toggleHelpPopup()"><b>Help</b></button>
-  
+
 
 
   <!--Video Feed Code  <span id="heartRate"></span> -->
@@ -94,32 +94,33 @@
  <!--Practice pop up change js DOM-->
  <div  id="firstMessage">
   Move the fingerprint into the circle by shifting your finger
-</div>  
+</div>
 <div  id="secondMessage">
   Measuring your heart rate. Hold still...
-</div>  
+</div>
 <div id="thirdMessage">
-  Measurement complete! 
+  Measurement complete!
 </div>
 <div id="fourthMessage">
-  <b>We're having trouble detecting your finger.</b> Move the 
+  <b>We're having trouble detecting your finger.</b> Move the
   fingerprint to the circle. <br> Hold still once your finger is aligned.
 </div>
 
 <!--<div id="debugText">-1</div>-->
 
   <div id="hrBPMDisplay" class="panel">
-   
-    <!--Heart rate:  <span id="heartRate"></span> BPM //displays HR BPM on the measurement page -->
+
+    <!-- //displays HR BPM on the measurement page -->
+    <span id="heartRate"></span>
     <img id="oval" src="dashed_oval.png" width="150px" height="170px">
 
-  
+
 
   </div>
 
 
-  
-  
+
+
   <div>
     <div id="rectangle">
     </div>

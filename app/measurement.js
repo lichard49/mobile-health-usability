@@ -252,7 +252,7 @@ function processCameraFrame() {
   }
 
 
-  heartRate.innerText = Math.round(heartRateBpm);
+  // heartRate.innerText = Math.round(heartRateBpm);
 }
 
 
@@ -287,7 +287,9 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
     setInterval(() => {
       drawCameraFrame();
       processCameraFrame();
-      drawSignal();
+      if (fingerInOval) {
+          drawSignal();
+      }
     }, samplePeriod);
   });
 }
@@ -302,7 +304,7 @@ function toggleHelpPopup(){
 
 /*
 //You can delete this if there is no use
-// This gets the Coordinates of Oval & Finger 
+// This gets the Coordinates of Oval & Finger
 let ovalEl = document.getElementById("oval");
 var oTopCoord = window.scrollY + ovalEl.getBoundingClientRect().top// top
 var oBottCoord = window.scrollX + ovalEl.getBoundingClientRect().bottom// bottom
@@ -329,7 +331,7 @@ if(yFinger > oTopCoord && yFinger < oBottCoord && xFinger > oLeftCoord && xFinge
 
 
 function isFingerInOval(x, y){
-  //160 < x && x < 330 && 170 < y && y < 370 <-- Original bounds current ones are extended 
+  //160 < x && x < 330 && 170 < y && y < 370 <-- Original bounds current ones are extended
   if(100 < x && x < 390 && 110 < y && y < 420){
     fingerInOval = true;
   }else{
@@ -344,7 +346,7 @@ setInterval(() => {
   fingerPlaced = isFingerOnCamera(measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data);
   document.getElementById('rectangle').style.display = "none";
   timeDelay++;
-  if(fingerInOval && fingerPlaced && timeDelay >= 18){
+  if(fingerInOval && fingerPlaced){ //&& timeDelay >= 18
       //this means finger is in frame & in right location
       timer = 0;
       fingerIn();
@@ -427,7 +429,7 @@ function fingerIn(){
   }
 }
 
-//averages the heart rates from the array 
+//averages the heart rates from the array
 function hrAvg(){
   const arLength = hrArray.length;
   for(let i = 0; i < arLength; i++){

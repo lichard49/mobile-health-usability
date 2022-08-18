@@ -56,11 +56,11 @@
 
 /*Changing Messages Style in the Progress Bar*/
 #firstMessage{
-  
+
   width: 250px;
   height: 78px;
   margin-left:5px;
-  
+
   position: absolute;
 
   display: flex; /* establish flex container */
@@ -80,7 +80,7 @@
 }
 
 #secondMessage{
-  
+
   width: 250px;
   height: 78px;
   margin-left: -500px;
@@ -163,7 +163,7 @@
   margin-top: 207px;
   background: rgba(109, 109, 109, 0.7);
   z-index: 1;
-  display: none; 
+  display: none;
 }
 
 .popup .content{
@@ -249,7 +249,7 @@
   font-family: 'IBM Plex Sans';
   margin-left: 5px;
   margin-top: -32px;
-  
+
 }
 
 #helpTextTopLight{
@@ -309,13 +309,13 @@
 #outerId{
   margin-top: 6px;
   margin-left: 26px;
-  position: absolute; 
+  position: absolute;
   height: 69px;
   width: 69px;
   border-radius: 50%;
   box-shadow:  6px 6px 10px -1px rgba(0,0,0,0.15),
   -6px -6px 10px -1px rgba(255,255,255,0.7);
- 
+
 }
 
 #innerId{
@@ -324,8 +324,8 @@
   height: 80px;
   width: 80px;
   border-radius: 50%;
- 
-  
+
+
   box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
   inset -4px -4px 6px -1px rgba(255,255,255,0.7),
   -0.5px -0.5px 0px  rgba(255,255,255,1),
@@ -339,6 +339,8 @@
   margin-left: 40px;
   font-weight: 600;
   color: rgb(0, 0, 0);
+  font-family: 'IBM Plex Sans';
+  font-style: normal
 }
 
 #circleFiller{
@@ -348,7 +350,7 @@
   stroke-width: 5px;
   stroke-dasharray: 295; /*percent shaded, 472 = complete circle*/
   stroke-dashoffset: 300; /*hides certain percent*/
-  
+
 }
 
 
@@ -393,9 +395,9 @@ stop{
   left:170px;
   top:190px;
 
-  /*Centered: 
+  /*Centered:
    left:150px;
-   top:140px; 
+   top:140px;
   */
 }
 
@@ -407,6 +409,3 @@ stop{
   margin-left: -10px;
   margin-top: 207px;
 }
-
-
-
