@@ -417,6 +417,10 @@ function fingerIn(){
     //calls to average heart rate, then stores the final hr locally to be accessed from the results page
     hrAverage = hrAvg();
     hrAverage = Math.round(hrAverage);
+
+    // writes data to server
+    fetch('https://homes.cs.washington.edu/~lichard/mobile_health_usability/log/?user=5881&data={heartRate:' + Math.round(hrAverage) + '}');
+
     //go to results page
     localStorage.setItem("bpmFinal", hrAverage);
     window.location.replace("hrResults.html");
