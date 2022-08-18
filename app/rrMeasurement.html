@@ -12,6 +12,12 @@
   <script defer type="text/javascript" src="rrMeasurement.js"></script>
   <link rel="stylesheet" type="text/css" href="rrbasicUIPagesStyle.css">
   <link rel="stylesheet" type="text/css" href="rrMeasurement.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;1,300&family=Patrick+Hand&display=swap');
+</style>
+<style>
+   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;1,300&display=swap');
+</style>
 </head>
 <body>
   <a href="rrPage4.html"><img src="arrowBlue.png" width="35px" height="35px"></a>
@@ -24,6 +30,7 @@
   <div id="helpMsg"><b>We're having trouble detecting you.</b> Make sure your body is aligned with the boxes on screen.</div>
   <img src="yellowHelpQuestionMark.png"  id="yllwQMark">
 
+  <!-- Progress Bar-->
     <div class="skill">
       <div class="outer" id="outerId"></div>
           <div class="inner" id="innerId"></div>
@@ -42,6 +49,7 @@
 </div>
 
 <script>
+  //hides/shows proper messages
   document.getElementById('positionMsg').style.display = "block";
   document.getElementById('detectingMsg').style.display = "none";
   document.getElementById('doneMsg').style.display = "none";
@@ -76,20 +84,20 @@
     var testComplete = false;   
     var counter = 0;
     let number = document.getElementById("number");
-    //document.getElementById('circleFiller').style.animation = "anim 30s linear forwards";
-    setInterval(() => {     
+    //document.getElementById('circleFiller').style.animation = "anim 30s linear forwards"; <-- this starts the blue/green line around the progress bar
+    setInterval(() => {    
+      //this controls the progress bar and the % done  
         if(counter == 100){
           testComplete = true; 
           document.getElementById('circleFiller').style.stroke= '#2EAF26';            
         }else if(personInBoxes && personInFrame){
-          //later change it to if fingerPlaced && if fingerInOval <-- proper location for measurments 
           counter += 1;
           number.innerHTML = counter + "%";
         }else{
           counter = 0;
           number.innerHTML = counter + "%";
         }
-    }, 300); //miliseconds 
+    }, 300); // 300 miliseconds == 30 seconds
     
 </script>
 

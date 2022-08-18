@@ -95,7 +95,7 @@ function toggleHelpPopup(){
 var personInFrame = true; 
 var personInBoxes = true;
 var timer = 0;
-var finalRR = -1;
+var finalRR = 14; //this value will be displayed to the user on the results page
 
 //Changes messages based on User's actions
 setInterval(() => {
@@ -103,6 +103,7 @@ if(personInFrame && personInBoxes){
   timer = 0;
   inRightLocation();
   if(testComplete){
+    //hides certain messages and goes to the results page
     document.getElementById('detectingMsg').style.display = "none";
     document.getElementById('doneMsg').style.display = "block";
     localStorage.setItem("rrFinal", finalRR);
@@ -113,7 +114,7 @@ if(personInFrame && personInBoxes){
   displayHelpMsgs();
 }else {
   timer++;
-  notInSpotAndWaiting();
+  notInSpotAndWaiting(); //displays proper messages 
 }
 }, 600); //milliseconds; 60 seconds; waits before displaying help message
 

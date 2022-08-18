@@ -154,7 +154,7 @@ a:link, a:visited {
     width: 900px;
     height: 330px;
     left: 40px;
-    top: 90px;
+    top: 110px;
     background: #FFFFFF;
     border: 3px solid #3771E0;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
@@ -165,8 +165,8 @@ a:link, a:visited {
     position: absolute;
     width: 900px;
     height: 330px;
-    left: 60px;
-    top: 90px;
+    left: 50px;
+    top: 110px;
     background: #FFFFFF;
     border: 3px solid #3771E0;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
@@ -178,7 +178,7 @@ a:link, a:visited {
     width: 950px;
     height: 330px;
     left: 60px;
-    top: 90px;
+    top: 110px;
     background: #FFFFFF;
     border: 3px solid #3771E0;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
@@ -191,7 +191,7 @@ a:link, a:visited {
     width: 950px;
     height: 350px;
     left: 70px;
-    top: 90px;
+    top: 110px;
     background: #FFFFFF;
     border: 3px solid #3771E0;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
@@ -302,7 +302,7 @@ a:link, a:visited {
     width: 500px;
     height: 100px;
     left: 440px;
-    top: 1550px;   
+    top: 1770px;   
     background: #074EE8;
     border-radius: 10px;
     border-style: solid;
@@ -441,3 +441,121 @@ a:link, a:visited {
 }
 
 
+#buttonNextPg2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    position: absolute;
+    width: 230px;
+    height: 110px;
+    left: 650px;
+    top: 1580px;   
+    background: #074EE8;
+    border-radius: 10px;
+    border-style: solid;
+    border-color:#074EE8;
+    color:white;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 18px;
+}
+
+#buttonCancelPg2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    margin-top: 1580px;
+    margin-left: 25px;
+    position: absolute;
+    width: 230px;
+    height: 110px;
+    background: #ffffff;
+    border-radius: 10px;
+    border-style: solid;
+    border-color:#ffffff;
+    color:#3771E0;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 18px;
+}
+#buttonNextPg3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    position: absolute;
+    width: 250px;
+    height: 120px;
+    left: 700px;
+    top: 1710px;   
+    background: #074EE8;
+    border-radius: 10px;
+    border-style: solid;
+    border-color:#074EE8;
+    color:white;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 18px;
+}
+
+#buttonCancelPg3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    margin-top: 1700px;
+    margin-left: 125px;
+    position: absolute;
+    width: 150px;
+    height: 120px;
+    background: #ffffff;
+    border-radius: 10px;
+    border-style: solid;
+    border-color:#ffffff;
+    color:#3771E0;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 18px;
+}
+
+#buttonCancelPg4{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px;
+    gap: 6px;
+    margin-top: 1770px;
+    margin-left: 25px;
+    position: absolute;
+    width: 230px;
+    height: 110px;
+    background: #ffffff;
+    border-radius: 10px;
+    border-style: solid;
+    border-color:#ffffff;
+    color:#3771E0;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 18px;
+}

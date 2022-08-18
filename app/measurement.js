@@ -83,7 +83,7 @@ function argMax(array) {
 
 
 
-
+//this array averages the calculated BPM (when finger is in the oval)
 var hrArray = [];
 const heartRate = document.getElementById('heartRate');
 
@@ -92,6 +92,7 @@ const redWindowLength = 90; // # frames
 let redWindow = [];
 
 function copyImageToCanvas(x, y){
+  //draws finerprint icon, x & y parameters are the location of the user's finger
   var image = document.getElementById("finger");
   var canvas = document.querySelector("canvas");
 
@@ -244,6 +245,8 @@ function processCameraFrame() {
   }
 
   const heartRateBpm = peaks * 60 / (windowSize / sampleRate) / 2;
+  //needs about 18 seconds to calculate hr correctly when in the right place
+  //currently just waiting 18 seconds then starting, to remove that function just delete all the timeDelay varaibles in this file
   if(fingerInOval && (timeDelay >= 18)){
     hrArray.push(heartRateBpm);
   }
@@ -298,8 +301,8 @@ function toggleHelpPopup(){
 
 
 /*
-
-//Coordinates of Oval
+//You can delete this if there is no use
+// This gets the Coordinates of Oval & Finger 
 let ovalEl = document.getElementById("oval");
 var oTopCoord = window.scrollY + ovalEl.getBoundingClientRect().top// top
 var oBottCoord = window.scrollX + ovalEl.getBoundingClientRect().bottom// bottom
@@ -326,7 +329,7 @@ if(yFinger > oTopCoord && yFinger < oBottCoord && xFinger > oLeftCoord && xFinge
 
 
 function isFingerInOval(x, y){
-  //160 < x && x < 330 && 170 < y && y < 370
+  //160 < x && x < 330 && 170 < y && y < 370 <-- Original bounds current ones are extended 
   if(100 < x && x < 390 && 110 < y && y < 420){
     fingerInOval = true;
   }else{
@@ -336,16 +339,12 @@ function isFingerInOval(x, y){
 
 
 var timer = 0;
-
-
 let counter = 0;
 setInterval(() => {
   fingerPlaced = isFingerOnCamera(measurementContext.getImageData(0, 0, measurementCanvas.width, measurementCanvas.height).data);
-  //later add if fingerPlaced --> start fingerprint icon tracking
   document.getElementById('rectangle').style.display = "none";
   timeDelay++;
-  if(fingerInOval && timeDelay >= 18){
-    //later add if finger is placed && if fingerInOval
+  if(fingerInOval && fingerPlaced && timeDelay >= 18){
       //this means finger is in frame & in right location
       timer = 0;
       fingerIn();
@@ -353,10 +352,8 @@ setInterval(() => {
     //finger is in frame but not in the right location and when the user hasn't gone to the right direction for a while
     fingerOut();
     timer++;
-    //hrArray = [];
   }else if( !fingerInOval && timer <= 60){
     //finger is not in the oval and the finger is not placed on the screen and it's been less than 60 seconds
-    //hrArray = [];
     document.getElementById('oval').src = "dashed_oval.png";
     document.getElementById('rectangle').style.display = "none";
     document.getElementById('circleFiller').style.animation = "null";
@@ -417,7 +414,7 @@ function fingerIn(){
   if(testComplete){
     document.getElementById("secondMessage").style.marginLeft = "-500px";
     document.getElementById("thirdMessage").style.marginLeft = "5px";
-
+    //calls to average heart rate, then stores the final hr locally to be accessed from the results page
     hrAverage = hrAvg();
     hrAverage = Math.round(hrAverage);
     //go to results page
@@ -426,6 +423,7 @@ function fingerIn(){
   }
 }
 
+//averages the heart rates from the array 
 function hrAvg(){
   const arLength = hrArray.length;
   for(let i = 0; i < arLength; i++){
